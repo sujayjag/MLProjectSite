@@ -20,9 +20,7 @@ Sipko tackled the NBA but introduced methods that are highly transferable to ten
 
 Several studies have attempted to predict tennis match outcomes or understand player performances, but with the influx of data, especially related to betting odds and in-depth player stats, there’s a new opportunity to extract meaningful insights.
 
-<p align="center">
-  <img width="300" src="[https://picsum.photos/460/300](https://qph.cf2.quoracdn.net/main-qimg-0ce99e626ee802157c1964a6c7b5cc82-pjlq)">
-</p>
+<img src="https://qph.cf2.quoracdn.net/main-qimg-0ce99e626ee802157c1964a6c7b5cc82-pjlq" width="300" />
 
 ### Problem Definition
 
