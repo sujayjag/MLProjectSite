@@ -51,8 +51,8 @@ Final Report (End of semester):
 - Thoroughly document the methods employed
 
 ### Datasets
-https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting
-https://www.kaggle.com/datasets/edoardoba/atp-tennis-data
+[Datset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
+[Dataset 2](https://www.kaggle.com/datasets/edoardoba/atp-tennis-data)
 
 ### Bibliography
 Dixon, M. J., & Coles, S. G. (1997). "Modelling association football scores and inefficiencies in the football betting market." Applied statistics, 46(2), 265-280.
