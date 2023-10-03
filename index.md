@@ -32,7 +32,11 @@ The project will employ a variety of machine learning algorithms, primarily star
 
 Metrics such as accuracy, precision, recall, and the F1 score will be used to gauge the model's efficiency. We can anticipate a fairly high success rate on the prediction based on initial exploratory data analysis. However, these figures can change for the better, as we delve deeper and refine our models through testing.
 
-### Dataset
+### Timeline
+Here is a picture of the Gantt Chart for this project:
+![Gantt Chart](assets/GanttChart.jpeg)
+
+### Datasets
 
 https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting
 https://www.kaggle.com/datasets/edoardoba/atp-tennis-data
