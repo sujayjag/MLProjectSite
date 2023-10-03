@@ -19,7 +19,7 @@ Though not strictly on tennis, Dixon and Coles' study on association football of
 Sipko tackled the NBA but introduced methods that are highly transferable to tennis prediction. He utilized the betting market odds and combined them with ranking methods, highlighting that betting odds indeed encompass significant predictive power, a testament to the efficiency of the broader betting market. This supports the idea of integrating betting odds into tennis match predictions for higher accuracy. (Sipko, 2014)
 
 Several studies have attempted to predict tennis match outcomes or understand player performances, but with the influx of data, especially related to betting odds and in-depth player stats, there’s a new opportunity to extract meaningful insights.
-![Serve Speed Analytics](assets/ServeSpeed.jpeg width="100" height="250")
+![Serve Speed Analytics](assets/ServeSpeed.jpeg | width="100" height="250")
 
 ### Problem Definition
 
