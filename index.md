@@ -21,6 +21,7 @@ Sipko tackled the NBA but introduced methods that are transferable to tennis pre
 Several studies have attempted to predict tennis match outcomes or understand player performances, but with the influx of data, especially related to betting odds and in-depth player stats, there’s a new opportunity to extract meaningful insights.
 
 <img src="https://qph.cf2.quoracdn.net/main-qimg-0ce99e626ee802157c1964a6c7b5cc82-pjlq" width="300" />
+<img src="https://tenniscreative.com/wp-content/uploads/2020/10/doubles-match-nitto-finals-london.jpg" width="300" />
 
 ### Problem Definition
 
@@ -38,11 +39,8 @@ Metrics such as accuracy, precision, recall, and the F1 score will be used to ga
 
 Gantt Chart:
 ![Gantt Chart](assets/GanttChart.jpeg)
-Contribution Chart:
-![Contribution Chart](assets/chart.jpeg)
 
 ### Contribution Chart
-
 ![Contribution Chart](assets/contributionChart.jpeg)
 
 ### Checkpoints
@@ -58,8 +56,8 @@ Midterm Report (9 weeks into the semester):
 - Thoroughly document the methods employed
 
 ### Datasets
+[Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
 
-[Datset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
 [Dataset 2](https://www.kaggle.com/datasets/edoardoba/atp-tennis-data)
 
 ### Bibliography
