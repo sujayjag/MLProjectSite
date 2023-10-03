@@ -38,6 +38,19 @@ Metrics such as accuracy, precision, recall, and the F1 score will be used to ga
 Here is a picture of the Gantt Chart for this project:
 ![Gantt Chart](assets/GanttChart.jpeg)
 
+### Contribution Chart
+![Contribution Chart](assets/contributionChart.jpeg)
+
+### Checkpoints
+Midterm Report (9 weeks into the semester):
+- Initial Model Building & Testing:
+- Implement the chosen machine learning models on a subset of the data.
+- Run initial tests to ascertain the accuracy and efficiency of these models.
+Final Report (End of semester):
+- Model Finalization & Documentation:
+- Complete any remaining testing and finalize the models.
+- Thoroughly document the methods employed
+
 ### Datasets
 [Datset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
 [Dataset 2](https://www.kaggle.com/datasets/edoardoba/atp-tennis-data)
