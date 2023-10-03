@@ -54,7 +54,7 @@ Final Report (End of semester):
 - Thoroughly document the methods employed
 
 ### Datasets
-[Datset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
+[Dataset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
 [Dataset 2](https://www.kaggle.com/datasets/edoardoba/atp-tennis-data)
 
 ### Bibliography
