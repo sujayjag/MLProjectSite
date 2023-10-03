@@ -20,6 +20,7 @@ Sipko tackled the NBA but introduced methods that are highly transferable to ten
 
 Several studies have attempted to predict tennis match outcomes or understand player performances, but with the influx of data, especially related to betting odds and in-depth player stats, there’s a new opportunity to extract meaningful insights.
 ![Serve Speed Analytics](assets/ServeSpeed.jpeg | width="100" height="250")
+<img src="https://qph.cf2.quoracdn.net/main-qimg-0ce99e626ee802157c1964a6c7b5cc82-pjlq" width="200" />
 
 ### Problem Definition
 
@@ -37,24 +38,13 @@ Metrics such as accuracy, precision, recall, and the F1 score will be used to ga
 Here is a picture of the Gantt Chart for this project:
 ![Gantt Chart](assets/GanttChart.jpeg)
 
-### Contribution Chart
-![Contribution Chart](assets/contributionChart.jpeg)
-
-### Checkpoints
-Midterm Report (9 weeks into the semester):
-- Initial Model Building & Testing:
-- Implement the chosen machine learning models on a subset of the data.
-- Run initial tests to ascertain the accuracy and efficiency of these models.
-Final Report (End of semester):
-- Model Finalization & Documentation:
-- Complete any remaining testing and finalize the models.
-- Thoroughly document the methods employed
-
 ### Datasets
+
 https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting
 https://www.kaggle.com/datasets/edoardoba/atp-tennis-data
 
 ### Bibliography
+
 Dixon, M. J., & Coles, S. G. (1997). "Modelling association football scores and inefficiencies in the football betting market." Applied statistics, 46(2), 265-280.
 
 Kovalchik, S. A. (2016). "Searching for the GOAT of tennis win prediction." Journal of Quantitative Analysis in Sports, 12(3), 127-138.
