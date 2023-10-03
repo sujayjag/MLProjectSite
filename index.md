@@ -37,8 +37,6 @@ Metrics such as accuracy, precision, recall, and the F1 score will be used to ga
 ### Timeline
 Here is a picture of the Gantt Chart for this project:
 ![Gantt Chart](assets/GanttChart.jpeg)
-Here is a contribution chart of the project so far:
-![Contribution Chart](assets/chart.jpeg)
 
 ### Contribution Chart
 ![Contribution Chart](assets/contributionChart.jpeg)
@@ -54,7 +52,7 @@ Final Report (End of semester):
 - Thoroughly document the methods employed
 
 ### Datasets
-[Dataset 1](https://www.kaggle.com/datasets/ehallmar a-large-tennis-dataset-for-atp-and-itf-betting)
+[Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
 [Dataset 2](https://www.kaggle.com/datasets/edoardoba/atp-tennis-data)
 
 ### Bibliography
