@@ -50,7 +50,9 @@ Midterm Report (9 weeks into the semester):
 - Initial Model Building & Testing:
 - Implement the chosen machine learning models on a subset of the data.
 - Run initial tests to ascertain the accuracy and efficiency of these models.
-  Final Report (End of semester):
+  
+Final Report (End of semester):
+
 - Model Finalization & Documentation:
 - Complete any remaining testing and finalize the models.
 - Thoroughly document the methods employed
