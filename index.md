@@ -45,6 +45,8 @@ Overall, our model's performance metrics indicate extremely high accuracy and ef
 
 ![Precision/Recall Curve](assets/rf_precision.png)
 
+The Precision-Recall curve shows the trade-off between precision and recall for different threshold. A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate.
+
 4. **F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
 
 5. **ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
@@ -65,15 +67,26 @@ The area under the ROC curve (AUC) is a measure of the model's ability to distin
 
 7. **Log Loss (0.02):** This measures the uncertainty of your predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
 
-### Interpretation in Context
-- The high accuracy, precision, recall, and F1 score suggest your model is extremely effective in predicting tennis match outcomes.
+**Feature Importance:**
+![Feature Importance](assets/rf_feature_importance.png)
+
+Feature importance gives us a score for each feature of our data, the higher the score, the more important or relevant is the feature towards our output variable. Feature importance is an inbuilt class that comes with Tree Based Classifiers, and we can use Random Forest Classifier for extracting the top features for our dataset.
+
+Higher Bar: Indicates that the feature is more important for the model when making predictions.
+Lower Bar: Indicates that the feature is less important.
+
+In the bar chart, each bar represents a feature in the dataset, and the length of the bar corresponds to the importance score. This helps in understanding which features have the most impact on the predictions made by the model.
+
+In this case, we see that a lot of the features that we left in aren't really useful in our classification task. Instead, a small number of features are being used the most in our model. For instance, sets_won and games_won are the two most important predictors for this problem. This makes sense because if a player wins a lost of sets/games, that typically means they will win the next one.
+
+This also suggests that we should perform feature reduction on this dataset to get a simpler model which reduces the features that are used in the predictions.
+
+#### Interpretation in Context
+- The high accuracy, precision, recall, and F1 score suggest our model is extremely effective in predicting tennis match outcomes.
 - The near-perfect ROC-AUC score implies excellent discriminative ability.
 - The confusion matrix confirms the high reliability of your model, with very few false positives and negatives.
 - The low log loss reflects the model's confidence in its predictions.
 
-### Caution
-- **Overfitting:** Such high performance metrics, especially in a complex task like sports prediction, may suggest overfitting. It's important to ensure the model is tested on a diverse and representative dataset.
-- **Real-world Validation:** Despite impressive metrics, validating the model in real-world scenarios is crucial to ensure it handles unforeseen data effectively.
 
 ### Timeline
 
