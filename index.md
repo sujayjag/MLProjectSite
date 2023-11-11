@@ -43,18 +43,13 @@ Gantt Chart:
 ![Contribution Chart](assets/cc.jpeg)
 
 ### Checkpoints
-
-Midterm Report (9 weeks into the semester):
-
-- Initial Model Building & Testing:
-- Implement the chosen machine learning models on a subset of the data.
-- Run initial tests to ascertain the accuracy and efficiency of these models.
   
 Final Report (End of semester):
 
 - Model Finalization & Documentation:
 - Complete any remaining testing and finalize the models.
-- Thoroughly document the methods employed
+- Thoroughly document the methods employed.
+- Add functionality to predict more than just games like spread of sets and betting odds.
 
 ### Datasets
 [Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
