@@ -37,19 +37,19 @@ As stated earlier, we chose to use a random forest classifier on our problem. We
 
 Overall, our model's performance metrics indicate extremely high accuracy and effectiveness in predicting tennis match outcomes. Here is a breakdown of each metric:
 
-1. **Accuracy (0.9971):** This measures the proportion of total predictions (wins and losses) that were correct. An accuracy of 0.9971 means that 99.71% of our predictions were accurate, which is exceptionally high.
+**Accuracy (0.9971):** This measures the proportion of total predictions (wins and losses) that were correct. An accuracy of 0.9971 means that 99.71% of our predictions were accurate, which is exceptionally high.
 
-2. **Precision (0.9976):** Precision evaluates how many of the predicted wins were actual wins. A precision of 0.9976 implies that when our model predicts a player will win, it is correct 99.76% of the time.
+**Precision (0.9976):** Precision evaluates how many of the predicted wins were actual wins. A precision of 0.9976 implies that when our model predicts a player will win, it is correct 99.76% of the time.
 
-3. **Recall (0.9965):** Recall assesses how many actual wins were correctly identified by the model. A recall of 0.9965 means that our model successfully identified 99.65% of all the actual wins.
+**Recall (0.9965):** Recall assesses how many actual wins were correctly identified by the model. A recall of 0.9965 means that our model successfully identified 99.65% of all the actual wins.
 
 ![Precision/Recall Curve](assets/rf_precision.png)
 
 The Precision-Recall curve shows the trade-off between precision and recall for different threshold. A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate.
 
-4. **F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
+**F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
 
-5. **ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
+**ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
 
 ![ROC](assets/rf_ROC.png)
 
@@ -57,7 +57,7 @@ The Receiver Operating Characteristic (ROC) curve is a graphical plot that illus
 The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. An AUC of 0.5 suggests no discrimination (i.e., random chance), while an AUC of 1.0 indicates perfect discrimination.
 
 
-6. **Confusion Matrix:**
+**Confusion Matrix:**
 ![Confusion Matrix](assets/rf_confusion_matrix.png)
     - True Negatives (TN): 21015 (correctly predicted losses)
     - False Positives (FP): 51 (incorrectly predicted as wins)
@@ -65,7 +65,7 @@ The area under the ROC curve (AUC) is a measure of the model's ability to distin
     - True Positives (TP): 21049 (correctly predicted wins)
    This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
 
-7. **Log Loss (0.02):** This measures the uncertainty of your predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
+**Log Loss (0.02):** This measures the uncertainty of our predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
 
 **Feature Importance:**
 ![Feature Importance](assets/rf_feature_importance.png)
@@ -81,11 +81,15 @@ In this case, we see that a lot of the features that we left in aren't really us
 
 This also suggests that we should perform feature reduction on this dataset to get a simpler model which reduces the features that are used in the predictions.
 
-#### Interpretation in Context
+#### Interpretation and Next Steps
 - The high accuracy, precision, recall, and F1 score suggest our model is extremely effective in predicting tennis match outcomes.
 - The near-perfect ROC-AUC score implies excellent discriminative ability.
-- The confusion matrix confirms the high reliability of your model, with very few false positives and negatives.
+- The confusion matrix confirms the high reliability of our model, with very few false positives and negatives.
 - The low log loss reflects the model's confidence in its predictions.
+- One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
+    - Thus, moving forward (for the final report) we can either try to find a dataset that models the complexities of the sport better, or we can shift to a more difficult problem in the context of our dataset.
+        - Some harder problems we can try to solve for next time are: predicting number of sets each game goes to, predicting how many games/set each player wins/loses in each match, number of break points and number of aces, helping analyze which betting odds are inaccurate/accurate, number of victories based off of tournament/court surface.
+    - 
 
 
 ### Timeline
