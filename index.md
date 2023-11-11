@@ -203,7 +203,7 @@ Gantt Chart:
   
 Final Report (End of semester):
 
-- Model Finalization & Documentation:
+- Model Finalization & Documentation (add more models)
 - Complete any remaining testing and finalize the models.
 - Thoroughly document the methods employed.
 - Add functionality to predict more than just games like spread of sets and betting odds.
