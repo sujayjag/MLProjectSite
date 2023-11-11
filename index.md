@@ -24,6 +24,18 @@ Several studies have attempted to predict tennis match outcomes or understand pl
 ### Problem Definition
 This project aims to harness the power of machine learning to revolutionize the way tennis outcomes are predicted, providing an analytical edge in understanding the nuances of the game. By analyzing a rich dataset that includes player matchups, rankings, tournament specifics, and betting odds, we can uncover patterns that offer deeper insights into player performances and predict tournament trajectories with greater accuracy. This approach not only enhances the understanding of the sport but also offers valuable perspectives for fans, analysts, and betting markets. The primary objective of this project is to predict tennis game, set, and match outcomes based on a series of parameters. The vast dataset provides a great foundation to seek patterns that might not be obvious at first glance. We can use past matchups between players and seed rankings to give us crucial information on predicting the outcome of the match and the spread of the sets as well. Information like tournament location and type of surface can be factors for future games that can be analyzed as either strenghts or weaknesses for certain players. Additionally, by integrating betting odds, there's potential to evaluate the market's accuracy in forecasting match results. We could also dive into how well a player may progress throughout a tournament, and predict their results before the tournament starts.
 
+### Data Visualizations and Explanations
+
+![Scatterplot of Win Rate and Number of Games Played](assets/fig1.jpg)
+This figure shows the correlation between win rate and number of games played. Each dot (player) represents their win rate based on how many games they played. With the given data, we found no correlation between the factors, meaning more games played doesn't affect how likely a player is to win or lose.
+
+![Pie Chart of Average Number of Aces by Court Surface](assets/fig2.jpg)
+
+The pie chart shows the average number of aces of all the data for each court surface played. We can see that clay has the least aces, and grass has the most aces (we are not including carpet because it is not that popular). This can tell us a lot about the data and can help with our overall goal of predicting matches. More aces means that the service games won for that player is probably a lot more frequent and easier compared to less aces. So, this could affect the number of games played for example between different court surfaces. These findings can be very important when trying to predict how many games player will play at different matches.
+
+![Word Cloud of Players with the Most Victories from All Matches (2010-2018)](assets/fig3.jpg)
+The word cloud represents the players with the most victories from all the data. The larger the name looks on the cloud, the more wins they have. This is obviously helpful in figuring out who is more likely to win on any given day, especially since Tennis is an individual sport and a consistent track record of victories is a good indiciation of a future win.
+
 ### Methods
 
 The project will employ a variety of machine learning algorithms, primarily starting with logistic regression and decision trees. Given the intricacy of the dataset, ensemble methods like random forests or gradient boosting might be employed later. We intend to leverage libraries such as scikit-learn. Our dataset is from Kaggle, which is a free platform that has numerous, large datasets of various topics.
@@ -134,7 +146,47 @@ This also suggests that we should perform feature reduction on this dataset to g
     - The dataset might also be too homogeneous or lack variability, leading the model to easily pick up patterns that might not generalize well to real-world, more diverse data. Looking through our model and dataset, we think this may be the case. Thus, as discussed above, we might want to explore a different problem in the future milestone.
 
 #### Results with PCA
-As mentioned earlier, we saw that a lot of dimensions of our data weren't being used in the predictions. Thus, we experimented with PCA; we first scaled our data using a StandardScaler() and then ran PCA with n_components set to 0.95 in order to keep 95% of variance in our dataset. Then, we fit our random forest classifier on this PCA dataset and ran it in order to generate predictions. Here are the ML metrics we got:
+As mentioned earlier, we saw that a lot of dimensions of our data weren't being used in the predictions. Thus, we experimented with PCA; we first scaled our data using a StandardScaler() and then ran PCA with n_components set to 0.95 in order to keep 95% of variance in our dataset. Then, we fit our random forest classifier on this PCA dataset and ran it in order to generate predictions.
+
+The new metrics we obtained using PCA (Principal Component Analysis) for dimensionality reduction and then applying a Random Forest classifier show a slight decrease in performance compared to the previous results without PCA. Let's break down these metrics:
+
+1. **Accuracy:**
+   - **New Accuracy (0.9714):** Indicates that 97.14% of the predictions were correct.
+   - **Interpretation:** The slight decrease in accuracy suggests that while PCA helped simplify the model by reducing dimensions, it might have also discarded some useful information.
+
+2. **Precision:**
+   - **New Precision (0.9707):** Means that when the model predicts a win, it's correct 97.07% of the time.
+   - **Interpretation:** This reduction indicates a slight increase in false positives (incorrect win predictions).
+
+3. **Recall:**
+   - **New Recall (0.9722):** Shows that the model correctly identifies 97.22% of actual wins.
+   - **Interpretation:** There's a small decrease in the model’s ability to identify all actual wins.
+
+4. **F1 Score:**
+   - **New F1 Score (0.9715):** This is the balance between precision and recall.
+   - **Interpretation:** The decrease suggests a slight drop in the balance between precision and recall.
+
+5. **ROC-AUC Score:**
+   - **New ROC-AUC (0.9963):** Still indicates excellent ability to distinguish between classes.
+   - **Interpretation:** A small decrease, but the model still has strong discriminative power.
+
+6. **Confusion Matrix:**
+   - **New Confusion Matrix:** Shows more false positives (620) and false negatives (587) compared to the previous model.
+   - **Interpretation:** There's an increase in both types of errors, indicating a slight decrease in prediction accuracy.
+
+7. **Log Loss:**
+   - **New Log Loss (0.0939):** Indicates a higher uncertainty in predictions compared to the previous model.
+   - **Interpretation:** This suggests the model is less confident in its predictions after applying PCA.
+
+We also created a scree plot for our modified dataset:
+![Scree Plot](assets/rf_pca_scree_plot.jpeg)
+
+#### Contrast and Implications
+- The decrease in all performance metrics suggests that PCA, while useful for simplification and potentially addressing issues like multicollinearity, might have removed some informative features.
+- The increase in log loss and decrease in precision, recall, and F1 score indicate a reduction in the overall reliability and confidence of the model.
+- However, the metrics are still relatively high, suggesting that the PCA-based model is still performing well, albeit not as exceptionally as the original model.
+- It's a trade-off scenario where PCA simplifies the model and potentially improves generalizability at the cost of a slight decrease in predictive performance.
+- Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
 ### Timeline
 
@@ -157,18 +209,6 @@ Final Report (End of semester):
 [Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
 
 This dataset has many files and we are primarily focusing on using the all_matches.csv that has data regarding games dating all the way back to 1993. There is key information about each game like date, player name, rankings, and specific stats pertaining to the game like breakpoints won and serve rating. There is also data relating to specific tournaments that can be used to analyze players perfomances in certain tournaments or countries to make our model more accurate. Finally, there are data files relating to betting moneylines and spreads that can be used in consideration with out regular model results to come to different conclusions on player victories and spreads.
-
-### Data Visualizations and Explanations
-
-![Scatterplot of Win Rate and Number of Games Played](assets/fig1.jpg)
-This figure shows the correlation between win rate and number of games played. Each dot (player) represents their win rate based on how many games they played. With the given data, we found no correlation between the factors, meaning more games played doesn't affect how likely a player is to win or lose.
-
-![Pie Chart of Average Number of Aces by Court Surface](assets/fig2.jpg)
-
-The pie chart shows the average number of aces of all the data for each court surface played. We can see that clay has the least aces, and grass has the most aces (we are not including carpet because it is not that popular). This can tell us a lot about the data and can help with our overall goal of predicting matches. More aces means that the service games won for that player is probably a lot more frequent and easier compared to less aces. So, this could affect the number of games played for example between different court surfaces. These findings can be very important when trying to predict how many games player will play at different matches.
-
-![Word Cloud of Players with the Most Victories from All Matches (2010-2018)](assets/fig3.jpg)
-The word cloud represents the players with the most victories from all the data. The larger the name looks on the cloud, the more wins they have. This is obviously helpful in figuring out who is more likely to win on any given day, especially since Tennis is an individual sport and a consistent track record of victories is a good indiciation of a future win.
 
 ### Bibliography
 
