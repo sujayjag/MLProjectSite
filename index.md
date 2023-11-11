@@ -181,6 +181,9 @@ The new metrics we obtained using PCA (Principal Component Analysis) for dimensi
 We also created a scree plot for our modified dataset:
 ![Scree Plot](assets/rf_pca_scree_plot.jpeg)
 
+A scree plot displays the eigenvalues associated with each principal component in a descending order versus the principal components themselves. Each eigenvalue represents the amount of variance that is captured by its corresponding principal component. The primary purpose of a scree plot is to show how much of the total variance in the data is explained by each principal component.
+
+
 #### Contrast and Implications
 - The decrease in all performance metrics suggests that PCA, while useful for simplification and potentially addressing issues like multicollinearity, might have removed some informative features.
 - The increase in log loss and decrease in precision, recall, and F1 score indicate a reduction in the overall reliability and confidence of the model.
