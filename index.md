@@ -43,11 +43,20 @@ Overall, our model's performance metrics indicate extremely high accuracy and ef
 
 3. **Recall (0.9965):** Recall assesses how many actual wins were correctly identified by the model. A recall of 0.9965 means that our model successfully identified 99.65% of all the actual wins.
 
+![Precision/Recall Curve](assets/rf_precision.png)
+
 4. **F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
 
 5. **ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
 
+![ROC](assets/rf_ROC.png)
+
+The Receiver Operating Characteristic (ROC) curve is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. The curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. An AUC of 0.5 suggests no discrimination (i.e., random chance), while an AUC of 1.0 indicates perfect discrimination.
+
+
 6. **Confusion Matrix:**
+![Confusion Matrix](assets/rf_confusion_matrix.png)
     - True Negatives (TN): 21015 (correctly predicted losses)
     - False Positives (FP): 51 (incorrectly predicted as wins)
     - False Negatives (FN): 73 (incorrectly predicted as losses)
