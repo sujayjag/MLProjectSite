@@ -65,6 +65,18 @@ Saving the Processed Data: Finally, the cleaned and processed dataset is saved t
 
 Overall, we have prepared the dataset for analysis by addressing common issues like irrelevant features, missing values, and non-numeric data. This preprocessing is an essential step in data science to ensure the quality and reliability of predictions derived from the data.
 
+### Data Visualizations and Explanations
+
+![Scatterplot of Win Rate and Number of Games Played](assets/fig1.jpg)
+This figure shows the correlation between win rate and number of games played. Each dot (player) represents their win rate based on how many games they played. With the given data, we found no correlation between the factors, meaning more games played doesn't affect how likely a player is to win or lose.
+
+![Pie Chart of Average Number of Aces by Court Surface](assets/fig2.jpg)
+
+The pie chart shows the average number of aces of all the data for each court surface played. We can see that clay has the least aces, and grass has the most aces (we are not including carpet because it is not that popular). This can tell us a lot about the data and can help with our overall goal of predicting matches. More aces means that the service games won for that player is probably a lot more frequent and easier compared to less aces. So, this could affect the number of games played for example between different court surfaces. These findings can be very important when trying to predict how many games player will play at different matches.
+
+![Word Cloud of Players with the Most Victories from All Matches (2010-2018)](assets/fig3.jpg)
+The word cloud represents the players with the most victories from all the data. The larger the name looks on the cloud, the more wins they have. This is obviously helpful in figuring out who is more likely to win on any given day, especially since Tennis is an individual sport and a consistent track record of victories is a good indiciation of a future win.
+
 #### Random Forest Classifier (w/ PCA):
 The first method we implemented and tested is a random forest classifier. We used this method for predicting the outcome of a given match between two payers. Random forests are an ensemble learning method that builds multiple decision trees during training and merges them together to get a more accurate and stable prediction. In the context of predicting tennis match outcomes, this ensemble approach can capture complex patterns and relationships within the data, making it effective for handling the intricacies of the sport, such as match conditions and historical performance.
 
@@ -134,19 +146,6 @@ This also suggests that we should perform feature reduction on this dataset to g
         - Some harder problems we can try to solve for next time are: predicting number of sets each game goes to, predicting how many games/set each player wins/loses in each match, number of break points and number of aces, helping analyze which betting odds are inaccurate/accurate, number of victories based off of tournament/court surface.
     - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
     - The dataset might also be too homogeneous or lack variability, leading the model to easily pick up patterns that might not generalize well to real-world, more diverse data. Looking through our model and dataset, we think this may be the case. Thus, as discussed above, we might want to explore a different problem in the future milestone.
-
-### Data Visualizations and Explanations
-
-![Scatterplot of Win Rate and Number of Games Played](assets/fig1.jpg)
-This figure shows the correlation between win rate and number of games played. Each dot (player) represents their win rate based on how many games they played. With the given data, we found no correlation between the factors, meaning more games played doesn't affect how likely a player is to win or lose.
-
-![Pie Chart of Average Number of Aces by Court Surface](assets/fig2.jpg)
-
-The pie chart shows the average number of aces of all the data for each court surface played. We can see that clay has the least aces, and grass has the most aces (we are not including carpet because it is not that popular). This can tell us a lot about the data and can help with our overall goal of predicting matches. More aces means that the service games won for that player is probably a lot more frequent and easier compared to less aces. So, this could affect the number of games played for example between different court surfaces. These findings can be very important when trying to predict how many games player will play at different matches.
-
-![Word Cloud of Players with the Most Victories from All Matches (2010-2018)](assets/fig3.jpg)
-The word cloud represents the players with the most victories from all the data. The larger the name looks on the cloud, the more wins they have. This is obviously helpful in figuring out who is more likely to win on any given day, especially since Tennis is an individual sport and a consistent track record of victories is a good indiciation of a future win.
-
 
 ### Timeline
 
