@@ -4,8 +4,6 @@ layout: default
 
 # CS 7641 Project
 
-## Project Proposal
-
 ### Introduction
 
 Professional tennis has seen numerous historic matches, tremendous athletes, and game-changing strategies over the past decade. This project aims to dive deep into this by examining a rich dataset encompassing a plethora of tennis matches. This dataset includes comprehensive details like match outcomes, betting odds, set and game outcomes, player statistics, court type, date, etc.
