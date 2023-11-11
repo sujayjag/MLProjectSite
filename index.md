@@ -179,7 +179,7 @@ The new metrics we obtained using PCA (Principal Component Analysis) for dimensi
    - **Interpretation:** This suggests the model is less confident in its predictions after applying PCA.
 
 We also created a scree plot for our modified dataset:
-![Scree Plot](assets/rf_pca_scree_plot.jpeg)
+![Scree Plot](assets/rf_pca_scree_plot.png)
 
 A scree plot displays the eigenvalues associated with each principal component in a descending order versus the principal components themselves. Each eigenvalue represents the amount of variance that is captured by its corresponding principal component. The primary purpose of a scree plot is to show how much of the total variance in the data is explained by each principal component.
 
