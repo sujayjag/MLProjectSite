@@ -58,6 +58,7 @@ Encoding Categorical Variables: By encoding categorical variables and separating
 Splitting the DataFrame into Features and Target:
 
 - X: The feature set (X) is created by dropping the player_victory column from the DataFrame. This implies that player_victory is the target variable, and the rest of the columns are features used for prediction.
+  
 - y: The target variable (y) is set as the player_victory column.
 
 Saving the Processed Data: Finally, the cleaned and processed dataset is saved to a new CSV file, matches_between_2010_2018.csv. This file can be used for further analysis or modeling.
