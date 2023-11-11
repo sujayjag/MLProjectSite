@@ -74,11 +74,66 @@ The code first performs a train-test split on the transformed data, dividing the
 
 Although our model performed very well across the evaluation metrics, there are potential downsides to using a random forest model that are worth mentioning. Random forests can be prone to overfitting, especially if the number of trees is too high or if the model is too complex. Fine-tuning hyperparameters, such as the maximum depth of the trees and the number of decision trees, could be explored to mitigate overfitting. The overall performance and efficiency of the model depend on various factors, including the quality of the data, the chosen features, and the hyperparameter settings. Since we used a high quality dataset which spans many years and used PCA for dimensinality reduction, the model we created performed well.
 
-### Potential Results and Discussions
+### Results
 
-The evaluation metrics used, including accuracy, precision, recall, F1 score, ROC AUC, confusion matrix, and log loss, provide a fairly complete analysis of the model's performance. Accuracy measures the overall correctness of predictions, precision quantifies the ratio of true positives to the total predicted positives, recall gauges the ratio of true positives to the actual positives, and F1 score combines precision and recall. ROC AUC assesses the model's ability to distinguish between classes, and the confusion matrix provides insights into false positives, false negatives, true positives, and true negatives. Log loss is a measure of how well the predicted probabilities align with the actual outcomes.
+As stated earlier, we chose to use a random forest classifier on our problem. We chose this model because it is great at handling non-linear data (our dataset has a lot of that), handling missing values, and reducing overfitting. After running our model on the dataset to predict tennis match outcomes, we tested our model with various ML metrics.
 
-We can anticipate a fairly high success rate on the prediction based on initial exploratory data analysis. However, these figures can change for the better, as we delve deeper and refine our models through testing.
+Overall, our model's performance metrics indicate extremely high accuracy and effectiveness in predicting tennis match outcomes. Here is a breakdown of each metric:
+
+**Accuracy (0.9971):** This measures the proportion of total predictions (wins and losses) that were correct. An accuracy of 0.9971 means that 99.71% of our predictions were accurate, which is exceptionally high.
+
+**Precision (0.9976):** Precision evaluates how many of the predicted wins were actual wins. A precision of 0.9976 implies that when our model predicts a player will win, it is correct 99.76% of the time.
+
+**Recall (0.9965):** Recall assesses how many actual wins were correctly identified by the model. A recall of 0.9965 means that our model successfully identified 99.65% of all the actual wins.
+
+![Precision/Recall Curve](assets/rf_precision.png)
+
+The Precision-Recall curve shows the trade-off between precision and recall for different threshold. A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate.
+
+**F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
+
+**ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
+
+![ROC](assets/rf_ROC.png)
+
+The Receiver Operating Characteristic (ROC) curve is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. The curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. An AUC of 0.5 suggests no discrimination (i.e., random chance), while an AUC of 1.0 indicates perfect discrimination.
+
+
+**Confusion Matrix:**
+![Confusion Matrix](assets/rf_confusion_matrix.png)
+    - True Negatives (TN): 21015 (correctly predicted losses)
+    - False Positives (FP): 51 (incorrectly predicted as wins)
+    - False Negatives (FN): 73 (incorrectly predicted as losses)
+    - True Positives (TP): 21049 (correctly predicted wins)
+   This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
+
+**Log Loss (0.02):** This measures the uncertainty of our predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
+
+**Feature Importance:**
+![Feature Importance](assets/rf_feature_importance.png)
+
+Feature importance gives us a score for each feature of our data, the higher the score, the more important or relevant is the feature towards our output variable. Feature importance is an inbuilt class that comes with Tree Based Classifiers, and we can use Random Forest Classifier for extracting the top features for our dataset.
+
+Higher Bar: Indicates that the feature is more important for the model when making predictions.
+Lower Bar: Indicates that the feature is less important.
+
+In the bar chart, each bar represents a feature in the dataset, and the length of the bar corresponds to the importance score. This helps in understanding which features have the most impact on the predictions made by the model.
+
+In this case, we see that a lot of the features that we left in aren't really useful in our classification task. Instead, a small number of features are being used the most in our model. For instance, sets_won and games_won are the two most important predictors for this problem. This makes sense because if a player wins a lost of sets/games, that typically means they will win the next one.
+
+This also suggests that we should perform feature reduction on this dataset to get a simpler model which reduces the features that are used in the predictions.
+
+#### Interpretation and Next Steps
+- The high accuracy, precision, recall, and F1 score suggest our model is extremely effective in predicting tennis match outcomes.
+- The near-perfect ROC-AUC score implies excellent discriminative ability.
+- The confusion matrix confirms the high reliability of our model, with very few false positives and negatives.
+- The low log loss reflects the model's confidence in its predictions.
+- One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
+    - Thus, moving forward (for the final report) we can either try to find a dataset that models the complexities of the sport better, or we can shift to a more difficult problem in the context of our dataset.
+        - Some harder problems we can try to solve for next time are: predicting number of sets each game goes to, predicting how many games/set each player wins/loses in each match, number of break points and number of aces, helping analyze which betting odds are inaccurate/accurate, number of victories based off of tournament/court surface.
+    - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
+    - The dataset might also be too homogeneous or lack variability, leading the model to easily pick up patterns that might not generalize well to real-world, more diverse data. Looking through our model and dataset, we think this may be the case. Thus, as discussed above, we might want to explore a different problem in the future milestone.
 
 ### Data Visualizations and Explanations
 
