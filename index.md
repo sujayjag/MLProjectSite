@@ -41,7 +41,7 @@ Gantt Chart:
 ![Gantt Chart](assets/GanttChart.jpeg)
 
 ### Contribution Chart
-![Contribution Chart](assets/contributionChart.jpeg)
+![Contribution Chart](assets/cc.jpeg)
 
 ### Checkpoints
 
