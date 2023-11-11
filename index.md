@@ -31,9 +31,40 @@ The primary objective of this project is to predict tennis game, set, and match 
 
 The project will employ a variety of machine learning algorithms, primarily starting with logistic regression and decision trees. Given the intricacy of the dataset, ensemble methods like random forests or gradient boosting might be employed later. We intend to leverage libraries such as scikit-learn. Our dataset is from Kaggle, which is a free platform that has numerous, large datasets of various topics.
 
-### Potential Results and Discussions
+### Results
 
-Metrics such as accuracy, precision, recall, and the F1 score will be used to gauge the model's efficiency. We can anticipate a fairly high success rate on the prediction based on initial exploratory data analysis. However, these figures can change for the better, as we delve deeper and refine our models through testing.
+As stated earlier, we chose to use a random forest classifier on our problem. We chose this model because it is great at handling non-linear data (our dataset has a lot of that), handling missing values, and reducing overfitting. After running our model on the dataset to predict tennis match outcomes, we tested our model with various ML metrics.
+
+Overall, our model's performance metrics indicate extremely high accuracy and effectiveness in predicting tennis match outcomes. Here is a breakdown of each metric:
+
+1. **Accuracy (0.9971):** This measures the proportion of total predictions (wins and losses) that were correct. An accuracy of 0.9971 means that 99.71% of our predictions were accurate, which is exceptionally high.
+
+2. **Precision (0.9976):** Precision evaluates how many of the predicted wins were actual wins. A precision of 0.9976 implies that when our model predicts a player will win, it is correct 99.76% of the time.
+
+3. **Recall (0.9965):** Recall assesses how many actual wins were correctly identified by the model. A recall of 0.9965 means that our model successfully identified 99.65% of all the actual wins.
+
+4. **F1 Score (0.9971):** The F1 score is the harmonic mean of precision and recall, providing a balance between them. An F1 score of 0.9971 is near perfect, indicating a strong balance between precision and recall in our model.
+
+5. **ROC-AUC Score (0.9998):** This score measures the ability of our model to distinguish between the classes (win and loss). A score of 0.9998 is almost perfect, indicating that our model does an exceptional job at distinguishing wins from losses.
+
+6. **Confusion Matrix:**
+    - True Negatives (TN): 21015 (correctly predicted losses)
+    - False Positives (FP): 51 (incorrectly predicted as wins)
+    - False Negatives (FN): 73 (incorrectly predicted as losses)
+    - True Positives (TP): 21049 (correctly predicted wins)
+   This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
+
+7. **Log Loss (0.02):** This measures the uncertainty of your predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
+
+### Interpretation in Context
+- The high accuracy, precision, recall, and F1 score suggest your model is extremely effective in predicting tennis match outcomes.
+- The near-perfect ROC-AUC score implies excellent discriminative ability.
+- The confusion matrix confirms the high reliability of your model, with very few false positives and negatives.
+- The low log loss reflects the model's confidence in its predictions.
+
+### Caution
+- **Overfitting:** Such high performance metrics, especially in a complex task like sports prediction, may suggest overfitting. It's important to ensure the model is tested on a diverse and representative dataset.
+- **Real-world Validation:** Despite impressive metrics, validating the model in real-world scenarios is crucial to ensure it handles unforeseen data effectively.
 
 ### Timeline
 
