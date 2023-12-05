@@ -234,7 +234,7 @@ This matrix indicates a high number of correct predictions, with a relatively sm
 **Confusion Matrix:**
 ![Confusion Matrix](assets/xgb_cm.png)
 
-Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where lower values are better. A log loss of 0.0637 demonstrates that the model's predictions are relatively confident and precise.
+**Log Loss (0.0637):** Log Loss quantifies the uncertainty of predictions, where lower values are better. A log loss of 0.0637 demonstrates that the model's predictions are relatively confident and precise.
 
 **Log Loss:**
 ![Log Loss](assets/xgb_log.png)
