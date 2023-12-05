@@ -135,13 +135,11 @@ In this case, we see that a lot of the features that we left in aren't really us
 
 This also suggests that we should perform feature reduction on this dataset to get a simpler model which reduces the features that are used in the predictions.
 
-#### Interpretation and Next Steps
+#### Interpretation
 - The high accuracy, precision, recall, and F1 score suggest our model is extremely effective in predicting tennis match outcomes.
 - The near-perfect ROC-AUC score implies excellent discriminative ability.
 - The confusion matrix confirms the high reliability of our model, with very few false positives and negatives.
 - The low log loss reflects the model's confidence in its predictions.
-- One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
-    - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
 
 #### Results with PCA
 As mentioned earlier, we saw that a lot of dimensions of our data weren't being used in the predictions. Thus, we experimented with PCA; we first scaled our data using a StandardScaler() and then ran PCA with n_components set to 0.95 in order to keep 95% of variance in our dataset. Then, we fit our random forest classifier on this PCA dataset and ran it in order to generate predictions.
@@ -321,10 +319,22 @@ For K-means clustering, we used the elbow method to select a certain number of c
 - **Performance:** High total points won and service games won, showcasing their ability to overpower opponents with their serve.
 - **Summary:** Players in this cluster are likely to rely on powerful serves to gain an advantage, potentially making them formidable in fast-paced matches.
 
-### Overall Implications:
+#### Overall Implications:
 - This analysis shows distinct playing styles among players, from all-rounders to serve-dominant and defensive players.
 - These insights could be used for strategic planning, coaching, and match preparation, tailoring tactics to exploit the weaknesses of opponents in different clusters.
 - It also highlights the diversity of skills and strategies in professional tennis, emphasizing the need for a versatile approach to training and competition.
+
+## Discussion
+
+### XGBoost vs. Random Forest
+
+### PCA vs Non-PCA Data
+
+### K-means Clustering
+
+### Next Steps
+- One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
+    - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
 
 ## Timeline
 
