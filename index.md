@@ -240,6 +240,7 @@ Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where low
 ![Log Loss](assets/xgb_log.png)
 
 #### Interpretation
+
 - The high accuracy, precision, recall, and F1 score suggest that the XGBoost model is highly effective in predicting tennis match outcomes.
 - The ROC-AUC score reinforces the model's exceptional capability to discriminate between wins and losses.
 - The confusion matrix affirms the model's reliability, showcasing a high rate of correct predictions with minimal errors.
@@ -364,33 +365,41 @@ For K-means clustering, we used the elbow method to select a certain number of c
 - The diversity in skill sets also emphasizes the importance of developing a comprehensive playing style, as different situations may favor different aspects of the game.
 
 #### Silhouette Score: 0.212
+
 - The Silhouette Score ranges from -1 to +1. A high value indicates that objects are well matched to their own cluster and poorly matched to neighboring clusters.
 - A score of 0.212 suggests that the clusters are not very distinct. The objects are not very close to their cluster centroids and/or there might be some overlap between clusters.
 - This means the inherent grouping in the data is not very pronounced.
 
 #### Davies-Bouldin Index: 1.629
+
 - The Davies-Bouldin Index is a measure of the average 'similarity' between clusters, where lower values indicate better clustering.
 - A value of 1.629, which is closer to the lower end of the scale (0 being the lowest), indicates a moderate level of separation between clusters.
 - It suggests that while there is some distinction between clusters, it's not highly pronounced.
 
 #### Calinski-Harabasz Index: 69538.387
+
 - This index is a ratio of the sum of between-clusters dispersion and of within-cluster dispersion. Higher values generally indicate better-defined clusters.
 - A score of 69538.387 is relatively high, which suggests good cluster definition.
 - It indicates that the clusters are relatively dense and well-separated, which is a positive sign.
 
 #### Overall Analysis:
+
 - The clustering results present a mixed picture. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition.
 - This could be due to the complex nature of the data, where clear, distinct groupings are challenging to achieve.
 
 #### K-means Using PCA
+
 ![K-means - PCA](assets/K-means_PCA.png)
+
 - Cluster Overlap: The clusters appear to have some degree of overlap, especially between Clusters 0, 1, and 3, which could indicate that the differentiation between these clusters is not very clear cut.
 - Data Variability: The spread of the clusters along the PCA components suggests variability in the dataset. The PCA Component 1 seems to account for the most variance, as indicated by the horizontal spread of the clusters.
-- Clustering Quality: The overlap in the PCA plot and varied cluster sizes suggest that the clustering solution may not be highly distinct. 
+- Clustering Quality: The overlap in the PCA plot and varied cluster sizes suggest that the clustering solution may not be highly distinct.
 - Feature Relevance: The PCA plot does not show widely separated, distinct clusters, which might mean that the features used for clustering do not have strong discriminative power, or the number of clusters is not optimal for the inherent data structure.
 
 #### Cluster Size Distribution
+
 ![K-means Cluster Size](assets/K-means_cluster_size.png)
+
 - The clusters seem to have a varied number of players. Cluster 2 has the smallest size, while Cluster 3 has the largest. An ideally balanced clustering would have roughly equal numbers of players in each cluster, but this is not always achievable or indicative of the best clustering depending on the nature of the data.
 - Dominant Cluster: Cluster 3 is the largest, suggesting that the majority of players in the dataset fit the profile associated with this cluster's centroid. This might indicate a common playing style or a set of attributes that are frequent among the players analyzed.
 - Potential Outliers: The smaller clusters, particularly Cluster 2, could represent more unique playing styles or a combination of attributes that are less common in your dataset.
@@ -398,6 +407,8 @@ For K-means clustering, we used the elbow method to select a certain number of c
 ## Discussion
 
 ### XGBoost vs. Random Forest
+
+The Random Forest model showed marginally better performance than the XGBoost model in terms of accuracy, precision, recall, and confidence (as indicated by the lower log loss and higher F1 and ROC-AUC scores). Both models managed missing values and reduced overfitting effectively, with Random Forest potentially being better at handling the non-linear nature of the data. Random Forest’s ability to determine feature importance provided insights into which features most significantly impacted the predictions. In summary, while both models were highly effective, the Random Forest model demonstrated slightly superior performance in accuracy, precision, recall, and confidence. However, the high performance of both models raises questions about the complexity of the problem and the possibility of over-simplification in modeling real-world tennis match outcomes.
 
 ### PCA vs Non-PCA Data
 
