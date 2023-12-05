@@ -217,10 +217,7 @@ Fill in
 ![Classification Error](assets/xgb_error.png)
 Fill in
 
-#### Interpretation and Next Steps
-Fill in
-
-#### Contrast and Implications
+#### Interpretation
 Fill in
 
 
@@ -336,15 +333,33 @@ For K-means clustering, we used the elbow method to select a certain number of c
 - **Performance:** Good performance in both winning games and in break points saved, suggesting versatility in different match situations.
 - **Summary:** These players likely have a balanced approach, being competent in both offensive and defensive aspects of the game. Their versatility can be a significant advantage in adapting to different opponents and playing conditions.
 
-#### Silhouette Score: 0.2122
-#### Davies-Bouldin Index: 1.6290
-#### Calinski-Harabasz Index: 69538.3874
-
 #### Overall Implications:
 
 - These clusters showcase a variety of playing styles in professional tennis, ranging from serve-dominant players to those excelling in returns and defensive strategies.
 - Understanding these styles can be crucial for coaching, match preparation, and strategy development, allowing for tailored approaches against different types of players.
 - The diversity in skill sets also emphasizes the importance of developing a comprehensive playing style, as different situations may favor different aspects of the game.
+
+#### Silhouette Score: 0.212
+- **Interpretation:** 
+  - The Silhouette Score ranges from -1 to +1. A high value indicates that objects are well matched to their own cluster and poorly matched to neighboring clusters.
+  - A score of 0.212 suggests that the clusters are not very distinct. The objects are not very close to their cluster centroids and/or there might be some overlap between clusters.
+  - This means the inherent grouping in the data is not very pronounced.
+
+#### Davies-Bouldin Index: 1.629
+- **Interpretation:**
+  - The Davies-Bouldin Index is a measure of the average 'similarity' between clusters, where lower values indicate better clustering.
+  - A value of 1.629, which is closer to the lower end of the scale (0 being the lowest), indicates a moderate level of separation between clusters.
+  - It suggests that while there is some distinction between clusters, it's not highly pronounced.
+
+#### Calinski-Harabasz Index: 69538.387
+- **Interpretation:**
+  - This index is a ratio of the sum of between-clusters dispersion and of within-cluster dispersion. Higher values generally indicate better-defined clusters.
+  - A score of 69538.387 is relatively high, which suggests good cluster definition.
+  - It indicates that the clusters are relatively dense and well-separated, which is a positive sign.
+
+#### Overall Analysis:
+- The clustering results present a mixed picture. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition.
+- This could be due to the complex nature of the data, where clear, distinct groupings are challenging to achieve.
 
 ## Discussion
 
