@@ -22,6 +22,7 @@ Several studies have attempted to predict tennis match outcomes or understand pl
 <img src="https://tenniscreative.com/wp-content/uploads/2020/10/doubles-match-nitto-finals-london.jpg" height="310" />
 
 ## Problem Definition
+
 This project aims to harness the power of machine learning to revolutionize the way tennis outcomes are predicted, providing an analytical edge in understanding the nuances of the game. By analyzing a rich dataset that includes player matchups, rankings, tournament specifics, and betting odds, we can uncover patterns that offer deeper insights into player performances and predict tournament trajectories with greater accuracy. This approach not only enhances the understanding of the sport but also offers valuable perspectives for fans, analysts, and betting markets. The primary objective of this project is to predict tennis game, set, and match outcomes based on a series of parameters. The vast dataset provides a great foundation to seek patterns that might not be obvious at first glance. We can use past matchups between players and seed rankings to give us crucial information on predicting the outcome of the match and the spread of the sets as well. Information like tournament location and type of surface can be factors for future games that can be analyzed as either strenghts or weaknesses for certain players. Additionally, by integrating betting odds, there's potential to evaluate the market's accuracy in forecasting match results. We could also dive into how well a player may progress throughout a tournament, and predict their results before the tournament starts.
 
 ## Data Visualizations and Explanations
@@ -64,11 +65,9 @@ Encoding Categorical Variables: By encoding categorical variables and separating
 
 - The fit_transform method of the LabelEncoder is used. This method first fits the encoder to the unique values in the column and then transforms these values into numerical labels. The transformed data replaces the original column values in the DataFrame.
 
-
 Splitting the DataFrame into Features and Target:
 
 - X: The feature set (X) is created by dropping the player_victory column from the DataFrame. This implies that player_victory is the target variable, and the rest of the columns are features used for prediction.
-  
 - y: The target variable (y) is set as the player_victory column.
 
 Saving the Processed Data: Finally, the cleaned and processed dataset is saved to a new CSV file, matches_between_2010_2018.csv. This file can be used for further analysis or modeling.
@@ -76,6 +75,7 @@ Saving the Processed Data: Finally, the cleaned and processed dataset is saved t
 Overall, we have prepared the dataset for analysis by addressing common issues like irrelevant features, missing values, and non-numeric data. This preprocessing is an essential step in data science to ensure the quality and reliability of predictions derived from the data.
 
 ### Random Forest Classifier (w/ PCA):
+
 The first method we implemented and tested is a random forest classifier. We used this method for predicting the outcome of a given match between two payers. Random forests are an ensemble learning method that builds multiple decision trees during training and merges them together to get a more accurate and stable prediction. In the context of predicting tennis match outcomes, this ensemble approach can capture complex patterns and relationships within the data, making it effective for handling the intricacies of the sport, such as match conditions and historical performance.
 
 Within our random forest classifier model, we created two sub-models to experiment with the impact of dimensionality reduction on the results. In one of the sub-models, no dimensionality reduction was employed, while in the second, before applying the random forest classifier, Principal Component Analysis (PCA) was used. PCA is a dimensionality reduction technique which works by transforming the original features into a new set of uncorrelated features, called principal components, ordered by their importance in explaining the variance in the data. The main objective of PCA is to reduce the dimensionality of the data while retaining as much of the original variability as possible. In our model, a PCA instance is made with n_components=0.95, indicating that PCA should retain enough components to explain 95% of the variance in the data. This allows for reducing dimensionality, while retaining a significant portion of the original information.
@@ -87,6 +87,7 @@ Although our model performed very well across the evaluation metrics, there are 
 ## Results
 
 ### Random Forest Classifier
+
 As stated earlier, we chose to use a random forest classifier on our problem. We chose this model because it is great at handling non-linear data (our dataset has a lot of that), handling missing values, and reducing overfitting. After running our model on the dataset to predict tennis match outcomes, we tested our model with various ML metrics.
 
 Overall, our model's performance metrics indicate extremely high accuracy and effectiveness in predicting tennis match outcomes. Here is a breakdown of each metric:
@@ -110,14 +111,9 @@ The Precision-Recall curve shows the trade-off between precision and recall for 
 The Receiver Operating Characteristic (ROC) curve is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. The curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
 The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. An AUC of 0.5 suggests no discrimination (i.e., random chance), while an AUC of 1.0 indicates perfect discrimination.
 
-
 **Confusion Matrix:**
-![Confusion Matrix](assets/rf_confusion_matrix.png)
-    - True Negatives (TN): 21015 (correctly predicted losses)
-    - False Positives (FP): 51 (incorrectly predicted as wins)
-    - False Negatives (FN): 73 (incorrectly predicted as losses)
-    - True Positives (TP): 21049 (correctly predicted wins)
-   This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
+![Confusion Matrix](assets/rf_confusion_matrix.png) - True Negatives (TN): 21015 (correctly predicted losses) - False Positives (FP): 51 (incorrectly predicted as wins) - False Negatives (FN): 73 (incorrectly predicted as losses) - True Positives (TP): 21049 (correctly predicted wins)
+This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
 
 **Log Loss (0.02):** This measures the uncertainty of our predictions, with lower values being better. A log loss of 0.02 indicates that our model is highly confident and accurate in its predictions.
 
@@ -136,37 +132,45 @@ In this case, we see that a lot of the features that we left in aren't really us
 This also suggests that we should perform feature reduction on this dataset to get a simpler model which reduces the features that are used in the predictions.
 
 #### Interpretation
+
 - The high accuracy, precision, recall, and F1 score suggest our model is extremely effective in predicting tennis match outcomes.
 - The near-perfect ROC-AUC score implies excellent discriminative ability.
 - The confusion matrix confirms the high reliability of our model, with very few false positives and negatives.
 - The low log loss reflects the model's confidence in its predictions.
 
 #### Results with PCA
+
 As mentioned earlier, we saw that a lot of dimensions of our data weren't being used in the predictions. Thus, we experimented with PCA; we first scaled our data using a StandardScaler() and then ran PCA with n_components set to 0.95 in order to keep 95% of variance in our dataset. Then, we fit our random forest classifier on this PCA dataset and ran it in order to generate predictions.
 
 The new metrics we obtained using PCA (Principal Component Analysis) for dimensionality reduction and then applying a Random Forest classifier show a slight decrease in performance compared to the previous results without PCA. Let's break down these metrics:
 
 1. **Accuracy:**
+
    - **New Accuracy (0.9714):** Indicates that 97.14% of the predictions were correct.
    - **Interpretation:** The slight decrease in accuracy suggests that while PCA helped simplify the model by reducing dimensions, it might have also discarded some useful information.
 
 2. **Precision:**
+
    - **New Precision (0.9707):** Means that when the model predicts a win, it's correct 97.07% of the time.
    - **Interpretation:** This reduction indicates a slight increase in false positives (incorrect win predictions).
 
 3. **Recall:**
+
    - **New Recall (0.9722):** Shows that the model correctly identifies 97.22% of actual wins.
    - **Interpretation:** There's a small decrease in the model’s ability to identify all actual wins.
 
 4. **F1 Score:**
+
    - **New F1 Score (0.9715):** This is the balance between precision and recall.
    - **Interpretation:** The decrease suggests a slight drop in the balance between precision and recall.
 
 5. **ROC-AUC Score:**
+
    - **New ROC-AUC (0.9963):** Still indicates excellent ability to distinguish between classes.
    - **Interpretation:** A small decrease, but the model still has strong discriminative power.
 
 6. **Confusion Matrix:**
+
    - **New Confusion Matrix:** Shows more false positives (620) and false negatives (587) compared to the previous model.
    - **Interpretation:** There's an increase in both types of errors, indicating a slight decrease in prediction accuracy.
 
@@ -180,6 +184,7 @@ We also created a scree plot for our modified dataset:
 A scree plot displays the eigenvalues associated with each principal component in a descending order versus the principal components themselves. Each eigenvalue represents the amount of variance that is captured by its corresponding principal component. The primary purpose of a scree plot is to show how much of the total variance in the data is explained by each principal component.
 
 #### Contrast and Implications
+
 - The decrease in all performance metrics suggests that PCA, while useful for simplification and potentially addressing issues like multicollinearity, might have removed some informative features.
 - The increase in log loss and decrease in precision, recall, and F1 score indicate a reduction in the overall reliability and confidence of the model.
 - However, the metrics are still relatively high, suggesting that the PCA-based model is still performing well, albeit not as exceptionally as the original model.
@@ -187,29 +192,31 @@ A scree plot displays the eigenvalues associated with each principal component i
 - Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
 ### K-means Clustering
+
 For K-means clustering, we used the elbow method to select a certain number of clusters: 5. Here are the clusters we got:
 
 #### Stats for Cluster 0
 
-| Statistic                            | Value       |
-|--------------------------------------|-------------|
-| serve_rating                         | 259.674347  |
-| aces                                 | 5.197283    |
-| double_faults                        | 3.034060    |
-| first_serve_made                     | 45.407087   |
-| first_serve_points_made              | 31.702354   |
-| second_serve_points_made             | 14.402684   |
-| break_points_saved                   | 4.109128    |
-| return_rating                        | 120.719572  |
-| first_serve_return_points_made       | 11.263962   |
-| second_serve_return_points_made      | 12.635195   |
-| break_points_made                    | 1.601761    |
-| games_won                            | 10.481843   |
-| games_against                        | 12.678500   |
-| service_games_won                    | 11.283413   |
-| total_points_won                     | 70.004195   |
+| Statistic                       | Value      |
+| ------------------------------- | ---------- |
+| serve_rating                    | 259.674347 |
+| aces                            | 5.197283   |
+| double_faults                   | 3.034060   |
+| first_serve_made                | 45.407087  |
+| first_serve_points_made         | 31.702354  |
+| second_serve_points_made        | 14.402684  |
+| break_points_saved              | 4.109128   |
+| return_rating                   | 120.719572 |
+| first_serve_return_points_made  | 11.263962  |
+| second_serve_return_points_made | 12.635195  |
+| break_points_made               | 1.601761   |
+| games_won                       | 10.481843  |
+| games_against                   | 12.678500  |
+| service_games_won               | 11.283413  |
+| total_points_won                | 70.004195  |
 
 #### Cluster 0: "Consistent Players"
+
 - **Characteristics:** Moderate serve rating, average aces, and double faults.
 - **Play Style:** Balanced between serving and returning, indicating a more consistent style of play.
 - **Performance:** Good at both winning games and saving break points, but not outstanding in any specific area.
@@ -217,25 +224,26 @@ For K-means clustering, we used the elbow method to select a certain number of c
 
 #### Stats for Cluster 1
 
-| Statistic                            | Value       |
-|--------------------------------------|-------------|
-| serve_rating                         | 194.927358  |
-| aces                                 | 1.899690    |
-| double_faults                        | 2.975879    |
-| first_serve_made                     | 29.708322   |
-| first_serve_points_made              | 17.288324   |
-| second_serve_points_made             | 8.286508    |
-| break_points_saved                   | 3.423053    |
-| return_rating                        | 91.195406   |
-| first_serve_return_points_made       | 6.590706    |
-| second_serve_return_points_made      | 7.479991    |
-| break_points_made                    | 0.680440    |
-| games_won                            | 4.947869    |
-| games_against                        | 11.793206   |
-| service_games_won                    | 7.870933    |
-| total_points_won                     | 39.645529   |
+| Statistic                       | Value      |
+| ------------------------------- | ---------- |
+| serve_rating                    | 194.927358 |
+| aces                            | 1.899690   |
+| double_faults                   | 2.975879   |
+| first_serve_made                | 29.708322  |
+| first_serve_points_made         | 17.288324  |
+| second_serve_points_made        | 8.286508   |
+| break_points_saved              | 3.423053   |
+| return_rating                   | 91.195406  |
+| first_serve_return_points_made  | 6.590706   |
+| second_serve_return_points_made | 7.479991   |
+| break_points_made               | 0.680440   |
+| games_won                       | 4.947869   |
+| games_against                   | 11.793206  |
+| service_games_won               | 7.870933   |
+| total_points_won                | 39.645529  |
 
 #### Cluster 1: "Defensive Players"
+
 - **Characteristics:** Lower serve rating and aces, moderate double faults.
 - **Play Style:** Lower first and second serve points made, suggesting a defensive or cautious playing style.
 - **Performance:** Lower total points won, indicating they might struggle in aggressive play.
@@ -243,25 +251,26 @@ For K-means clustering, we used the elbow method to select a certain number of c
 
 #### Stats for Cluster 2
 
-| Statistic                            | Value       |
-|--------------------------------------|-------------|
-| serve_rating                         | 252.012630  |
-| aces                                 | 4.366957    |
-| double_faults                        | 3.967748    |
-| first_serve_made                     | 55.614636   |
-| first_serve_points_made              | 37.725098   |
-| second_serve_points_made             | 17.700540   |
-| break_points_saved                   | 5.352644    |
-| return_rating                        | 164.187618  |
-| first_serve_return_points_made       | 19.058119   |
-| second_serve_return_points_made      | 19.443693   |
-| break_points_made                    | 4.250251    |
-| games_won                            | 14.777721   |
-| games_against                        | 13.610707   |
-| service_games_won                    | 13.986645   |
-| total_points_won                     | 93.927450   |
+| Statistic                       | Value      |
+| ------------------------------- | ---------- |
+| serve_rating                    | 252.012630 |
+| aces                            | 4.366957   |
+| double_faults                   | 3.967748   |
+| first_serve_made                | 55.614636  |
+| first_serve_points_made         | 37.725098  |
+| second_serve_points_made        | 17.700540  |
+| break_points_saved              | 5.352644   |
+| return_rating                   | 164.187618 |
+| first_serve_return_points_made  | 19.058119  |
+| second_serve_return_points_made | 19.443693  |
+| break_points_made               | 4.250251   |
+| games_won                       | 14.777721  |
+| games_against                   | 13.610707  |
+| service_games_won               | 13.986645  |
+| total_points_won                | 93.927450  |
 
 #### Cluster 2: "All-Rounders"
+
 - **Characteristics:** High serve and return ratings, good at both first and second serves, and return points.
 - **Play Style:** Strong in break points saved and made, indicating effectiveness in both offensive and defensive aspects.
 - **Performance:** High total points won, suggesting overall strong performance in matches.
@@ -269,25 +278,26 @@ For K-means clustering, we used the elbow method to select a certain number of c
 
 #### Stats for Cluster 3
 
-| Statistic                            | Value       |
-|--------------------------------------|-------------|
-| serve_rating                         | 290.251875  |
-| aces                                 | 3.935343    |
-| double_faults                        | 1.856723    |
-| first_serve_made                     | 32.040272   |
-| first_serve_points_made              | 24.507018   |
-| second_serve_points_made             | 11.544548   |
-| break_points_saved                   | 2.005338    |
-| return_rating                        | 208.975579  |
-| first_serve_return_points_made       | 13.678366   |
-| second_serve_return_points_made      | 13.987290   |
-| break_points_made                    | 4.154172    |
-| games_won                            | 12.086264   |
-| games_against                        | 5.387236    |
-| service_games_won                    | 8.756478    |
-| total_points_won                     | 63.717222   |
+| Statistic                       | Value      |
+| ------------------------------- | ---------- |
+| serve_rating                    | 290.251875 |
+| aces                            | 3.935343   |
+| double_faults                   | 1.856723   |
+| first_serve_made                | 32.040272  |
+| first_serve_points_made         | 24.507018  |
+| second_serve_points_made        | 11.544548  |
+| break_points_saved              | 2.005338   |
+| return_rating                   | 208.975579 |
+| first_serve_return_points_made  | 13.678366  |
+| second_serve_return_points_made | 13.987290  |
+| break_points_made               | 4.154172   |
+| games_won                       | 12.086264  |
+| games_against                   | 5.387236   |
+| service_games_won               | 8.756478   |
+| total_points_won                | 63.717222  |
 
 #### Cluster 3: "Aggressive Returners"
+
 - **Characteristics:** Highest return rating among all clusters.
 - **Play Style:** Good at return points but lower service games won, suggesting a stronger focus on returning than serving.
 - **Performance:** More games won against than won, indicating they might put opponents under pressure but struggle to close games.
@@ -295,31 +305,33 @@ For K-means clustering, we used the elbow method to select a certain number of c
 
 #### Stats for Cluster 4
 
-| Statistic                            | Value       |
-|--------------------------------------|-------------|
-| serve_rating                         | 278.815536  |
-| aces                                 | 11.156993   |
-| double_faults                        | 4.472828    |
-| first_serve_made                     | 71.567535   |
-| first_serve_points_made              | 52.709079   |
-| second_serve_points_made             | 23.197356   |
-| break_points_saved                   | 6.000870    |
-| return_rating                        | 126.829680  |
-| first_serve_return_points_made       | 18.841158   |
-| second_serve_return_points_made      | 21.045803   |
-| break_points_made                    | 2.923244    |
-| games_won                            | 18.137410   |
-| games_against                        | 17.765979   |
-| service_games_won                    | 17.430180   |
-| total_points_won                     | 115.793396  |
+| Statistic                       | Value      |
+| ------------------------------- | ---------- |
+| serve_rating                    | 278.815536 |
+| aces                            | 11.156993  |
+| double_faults                   | 4.472828   |
+| first_serve_made                | 71.567535  |
+| first_serve_points_made         | 52.709079  |
+| second_serve_points_made        | 23.197356  |
+| break_points_saved              | 6.000870   |
+| return_rating                   | 126.829680 |
+| first_serve_return_points_made  | 18.841158  |
+| second_serve_return_points_made | 21.045803  |
+| break_points_made               | 2.923244   |
+| games_won                       | 18.137410  |
+| games_against                   | 17.765979  |
+| service_games_won               | 17.430180  |
+| total_points_won                | 115.793396 |
 
 #### Cluster 4: "Serve Dominators"
+
 - **Characteristics:** Highest serve rating and aces, high double faults.
 - **Play Style:** Exceptional first serve made and points won, indicating a dominant serving game.
 - **Performance:** High total points won and service games won, showcasing their ability to overpower opponents with their serve.
 - **Summary:** Players in this cluster are likely to rely on powerful serves to gain an advantage, potentially making them formidable in fast-paced matches.
 
 #### Overall Implications:
+
 - This analysis shows distinct playing styles among players, from all-rounders to serve-dominant and defensive players.
 - These insights could be used for strategic planning, coaching, and match preparation, tailoring tactics to exploit the weaknesses of opponents in different clusters.
 - It also highlights the diversity of skills and strategies in professional tennis, emphasizing the need for a versatile approach to training and competition.
@@ -333,8 +345,9 @@ For K-means clustering, we used the elbow method to select a certain number of c
 ### K-means Clustering
 
 ### Next Steps
+
 - One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
-    - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
+  - Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
 
 ## Timeline
 
@@ -342,9 +355,11 @@ Gantt Chart:
 ![Gantt Chart](assets/GanttChart.jpeg)
 
 ## Contribution Chart
+
 ![Contribution Chart](assets/cc.jpeg)
 
 ## Datasets
+
 [Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
 
 This dataset has many files and we are primarily focusing on using the all_matches.csv that has data regarding games dating all the way back to 1993. There is key information about each game like date, player name, rankings, and specific stats pertaining to the game like breakpoints won and serve rating. There is also data relating to specific tournaments that can be used to analyze players perfomances in certain tournaments or countries to make our model more accurate. Finally, there are data files relating to betting moneylines and spreads that can be used in consideration with out regular model results to come to different conclusions on player victories and spreads.
