@@ -198,29 +198,49 @@ A scree plot displays the eigenvalues associated with each principal component i
 
 ### XGBBoost
 
-**Confusion Matrix:**
-![Confusion Matrix](assets/xgb_cm.png)
-Fill in
+We employed an XGBoost classifier for our dataset, renowned for its efficiency in handling various types of data, managing missing values, and reducing overfitting. The results from the XGBoost model in predicting tennis match outcomes, tested across multiple ML metrics, are as follows:
 
-**ROC:**
-![ROC](assets/xgb_roc.png)
-Fill in
+Accuracy (0.9751): This metric reflects the overall correctness of the model's predictions. An accuracy of 97.51% indicates that our model correctly predicted the outcomes of tennis matches with high reliability.
+
+Precision (0.9735): Precision measures the accuracy of positive predictions. With a precision of 97.35%, this implies that when our model predicts a player will win, it is correct about 97.35% of the time.
+
+Recall (0.9768): Recall, or the true positive rate, indicates how many actual wins were correctly identified. A recall of 97.68% signifies that the model successfully identified approximately 97.68% of the actual wins.
 
 **Precision/Recall Curve:**
 ![Precision/Recall Curve](assets/xgb_pre.png)
-Fill in
+
+F1 Score (0.9752): The F1 score combines precision and recall into a single metric, offering a balance between the two. An F1 score of 97.52% is indicative of a robust model with a balanced precision and recall.
+
+ROC-AUC Score (0.9974): This score assesses the model's ability to differentiate between classes (win and loss). A score of 99.74% is outstanding, suggesting that the model is highly effective at distinguishing between wins and losses.
+
+**ROC:**
+![ROC](assets/xgb_roc.png)
+
+Confusion Matrix: The confusion matrix provides a detailed view of the model's performance:
+
+True Negatives (TN): 20504 (correctly predicted losses)
+False Positives (FP): 562 (incorrectly predicted as wins)
+False Negatives (FN): 489 (incorrectly predicted as losses)
+True Positives (TP): 20633 (correctly predicted wins)
+This matrix indicates a high number of correct predictions, with a relatively small number of false positives and negatives.
+
+**Confusion Matrix:**
+![Confusion Matrix](assets/xgb_cm.png)
+
+Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where lower values are better. A log loss of 0.0637 demonstrates that the model's predictions are relatively confident and precise.
 
 **Log Loss:**
 ![Log Loss](assets/xgb_log.png)
-Fill in
 
+Fill In
 **Classification Error:**
 ![Classification Error](assets/xgb_error.png)
-Fill in
 
 #### Interpretation
-
-Fill in
+- The high accuracy, precision, recall, and F1 score suggest that the XGBoost model is highly effective in predicting tennis match outcomes.
+- The ROC-AUC score reinforces the model's exceptional capability to discriminate between wins and losses.
+- The confusion matrix affirms the model's reliability, showcasing a high rate of correct predictions with minimal errors.
+- The relatively low log loss indicates a good level of confidence in the model's predictions.
 
 ### K-means Clustering
 
