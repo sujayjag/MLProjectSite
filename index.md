@@ -239,9 +239,6 @@ Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where low
 **Log Loss:**
 ![Log Loss](assets/xgb_log.png)
 
-**Classification Error:**
-![Classification Error](assets/xgb_error.png)
-
 #### Interpretation
 - The high accuracy, precision, recall, and F1 score suggest that the XGBoost model is highly effective in predicting tennis match outcomes.
 - The ROC-AUC score reinforces the model's exceptional capability to discriminate between wins and losses.
