@@ -129,7 +129,6 @@ The Precision-Recall curve shows the trade-off between precision and recall for 
 The Receiver Operating Characteristic (ROC) curve is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. The curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
 The area under the ROC curve (AUC) is a measure of the model's ability to distinguish between the classes. An AUC of 0.5 suggests no discrimination (i.e., random chance), while an AUC of 1.0 indicates perfect discrimination.
 
-**Confusion Matrix:**
 ![Confusion Matrix](assets/rf_confusion_matrix.png) - True Negatives (TN): 21015 (correctly predicted losses) - False Positives (FP): 51 (incorrectly predicted as wins) - False Negatives (FN): 73 (incorrectly predicted as losses) - True Positives (TP): 21049 (correctly predicted wins)
 This matrix provides a detailed breakdown of our predictions, showing an extremely high number of correct predictions and very few errors.
 
@@ -240,7 +239,6 @@ Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where low
 **Log Loss:**
 ![Log Loss](assets/xgb_log.png)
 
-Fill In
 **Classification Error:**
 ![Classification Error](assets/xgb_error.png)
 
