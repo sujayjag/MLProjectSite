@@ -375,6 +375,8 @@ To compare PCA vs. Non-PCA data, we can use our results from the Random Forest C
 - Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
 ### K-means Clustering
+Most of the discussion for this was done in the results section. It is worth reiterating, however, that the k-means cluster model didn't perform too well. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition. Thus, to improve our clustering, we can experiment with different numbers of clusters, using different features, or trying other clustering algorithms like hierarchical clustering or DBSCAN that might be better suited to our data's structure.
+
 
 ### Next Steps
 
