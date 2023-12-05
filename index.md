@@ -84,6 +84,15 @@ The code first performs a train-test split on the transformed data, dividing the
 
 Although our model performed very well across the evaluation metrics, there are potential downsides to using a random forest model that are worth mentioning. Random forests can be prone to overfitting, especially if the number of trees is too high or if the model is too complex. Fine-tuning hyperparameters, such as the maximum depth of the trees and the number of decision trees, could be explored to mitigate overfitting. The overall performance and efficiency of the model depend on various factors, including the quality of the data, the chosen features, and the hyperparameter settings. Since we used a high quality dataset which spans many years and used PCA for dimensinality reduction, the model we created performed well.
 
+### XGBoost:
+The next method implemented for predicting the outcome of a given match between two players is XGBoost, or eXtreme Gradient Boosting. It is a highly efficient machine learning algorithm known to be highly effective with structured data that belongs to the ensemble learning family. XGBoost is an extension of the gradient boosting framework, enhancing it with several features that contribute to its increased robustness and performance. The key advantages of XGBoost are that it can handle non-linearity, understand complex relationships, and regularizes to control overfitting.
+
+At its core, XGBoost builds a strong predictive model by combining the predictions of multiple decision trees. It uses an ensemble of these trees to iteratively correct errors made by previous trees. The gradient in XGBoost refers to the optimization process, where the algorithm minimizes a loss function by moving in the direction of steepest descent. This allows XGBoost to effectively capture complex relationships in the data and handle non-linearity. XGBoost incorporates L1 and L2 regularization terms into the objective function, preventing overfitting and improving generalization to unseen data. A learning rate is used to control the contribution of each tree to the final prediction. Lower values make the model more robust but require more boosting rounds. Additionally, although our dataset was clearned to remove inputs with missing values, XGBoost has built-in mechanisms to handle missing values during the training process, allowing the model to make predictions even with incomplete data.
+
+Data applied with PCA is used to reduce the dimensionality of the feature space while retaining the most critical information, enhancing efficiency and potentially improving model performance. After this data is split into the train-test split, the XGBoost model is implemented. The xgboost library has model options for both regression and classification, and an instance of the classifier for binary classification was first created. The first parameter, n_estimators, specifies the number of decision trees that will be used in the ensemble. This is a very important hyperparameter which influences the performance and behavior of the model. The number of estimators influences the trade-off between bias and variance in the model. A higher number of estimators generally leads to a more complex model with lower bias but higher variance. Conversely, a lower number of estimators results in a simpler model with higher bias but lower variance. Finding the right balance is crucial for optimal model performance. Additionally, increasing the number of estimators also increases computational complexity. More trees require more computation during both training and prediction. Likewise, the number of trees also influences the fitting of the data, where it could end up overfitting or underfitting if chosen improperly. 100 decision trees were chosen for the n_estimators parameter after emperical testing analyzing the efficiency and computation times. Although there are a relatively large number of trees being used, since XGBoost incorporates regularization techniques, overfitting doesn't happen based off testing. Lastly, similar to the random forest implementation, a fixed random seed parameter is needed for the model (random_state=42). This parameter is used to set the random seed for reproducibility. Randomness is involved in the training process of the XGBoost model, especially when selecting subsets of data and features for each tree. Setting a random seed ensures that the results will be the same every time the code is run, making it easier to reproduce the same model and results for analysis or sharing. After the model is trained, predictions are made and metrics are analyzed.
+
+Although our XGBoost model performed very well across the evaluation metrics, there are potential downsides which should are worth discussing. One notable drawback is its potential susceptibility to overfitting, especially when hyperparameters are not tuned properly or when the dataset is small. XGBoost is capable of fitting complex models, and if the number of trees/boosting rounds is too high or other hyperparameters are not appropriately set, the model may memorize the training data rather than capturing generalizable patterns. Additionally, the interpretability of XGBoost models can be challenging, particularly as the number of trees increases. The ensemble nature of XGBoost makes it challenging to trace individual feature contributions, limiting its interpretability compared to simpler models like linear regression. Finally, XGBoost's optimality depends on the dataset, which in this case was not an issue.
+
 ## Results
 
 ### Random Forest Classifier
@@ -185,6 +194,35 @@ We also created a scree plot for our modified dataset:
 ![Scree Plot](assets/rf_pca_scree_plot.png)
 
 A scree plot displays the eigenvalues associated with each principal component in a descending order versus the principal components themselves. Each eigenvalue represents the amount of variance that is captured by its corresponding principal component. The primary purpose of a scree plot is to show how much of the total variance in the data is explained by each principal component.
+
+### XGBBoost
+
+**Confusion Matrix:**
+![Confusion Matrix](assets/xgb_cm.png)
+Fill in
+
+**ROC:**
+![ROC](assets/xgb_roc.png)
+Fill in
+
+**Precision/Recall Curve:**
+![Precision/Recall Curve](assets/xgb_pre.png)
+Fill in
+
+**Log Loss:**
+![Log Loss](assets/xgb_log.png)
+Fill in
+
+**Classification Error:**
+![Classification Error](assets/xgb_error.png)
+Fill in
+
+#### Interpretation and Next Steps
+Fill in
+
+#### Contrast and Implications
+Fill in
+
 
 ### K-means Clustering
 
