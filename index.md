@@ -382,9 +382,21 @@ For K-means clustering, we used the elbow method to select a certain number of c
 - It indicates that the clusters are relatively dense and well-separated, which is a positive sign.
 
 #### Overall Analysis:
-
 - The clustering results present a mixed picture. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition.
 - This could be due to the complex nature of the data, where clear, distinct groupings are challenging to achieve.
+
+#### K-means Using PCA
+![Classification Error](assets/K-means_PCA.png)
+- Cluster Overlap: The clusters appear to have some degree of overlap, especially between Clusters 0, 1, and 3, which could indicate that the differentiation between these clusters is not very clear cut.
+- Data Variability: The spread of the clusters along the PCA components suggests variability in the dataset. The PCA Component 1 seems to account for the most variance, as indicated by the horizontal spread of the clusters.
+- Clustering Quality: The overlap in the PCA plot and varied cluster sizes suggest that the clustering solution may not be highly distinct. 
+- Feature Relevance: The PCA plot does not show widely separated, distinct clusters, which might mean that the features used for clustering do not have strong discriminative power, or the number of clusters is not optimal for the inherent data structure.
+
+#### Cluster Size Distribution
+![Classification Error](assets/K-K-means_cluster_size.png)
+- The clusters seem to have a varied number of players. Cluster 2 has the smallest size, while Cluster 3 has the largest. An ideally balanced clustering would have roughly equal numbers of players in each cluster, but this is not always achievable or indicative of the best clustering depending on the nature of the data.
+- Dominant Cluster: Cluster 3 is the largest, suggesting that the majority of players in the dataset fit the profile associated with this cluster's centroid. This might indicate a common playing style or a set of attributes that are frequent among the players analyzed.
+- Potential Outliers: The smaller clusters, particularly Cluster 2, could represent more unique playing styles or a combination of attributes that are less common in your dataset.
 
 ## Discussion
 
