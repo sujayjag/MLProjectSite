@@ -203,7 +203,7 @@ A scree plot displays the eigenvalues associated with each principal component i
 ### XGBBoost
 
 **Confusion Matrix:**
-![Confusion Matrix](assets/xgb_confusion_matrix.png)
+![Confusion Matrix](assets/xgb_cm.png)
 Fill in
 
 **ROC:**
