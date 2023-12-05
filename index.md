@@ -207,23 +207,23 @@ A scree plot displays the eigenvalues associated with each principal component i
 
 We employed an XGBoost classifier for our dataset, renowned for its efficiency in handling various types of data, managing missing values, and reducing overfitting. The results from the XGBoost model in predicting tennis match outcomes, tested across multiple ML metrics, are as follows:
 
-Accuracy (0.9751): This metric reflects the overall correctness of the model's predictions. An accuracy of 97.51% indicates that our model correctly predicted the outcomes of tennis matches with high reliability.
+**Accuracy (0.9751):** This metric reflects the overall correctness of the model's predictions. An accuracy of 97.51% indicates that our model correctly predicted the outcomes of tennis matches with high reliability.
 
-Precision (0.9735): Precision measures the accuracy of positive predictions. With a precision of 97.35%, this implies that when our model predicts a player will win, it is correct about 97.35% of the time.
+**Precision (0.9735):** Precision measures the accuracy of positive predictions. With a precision of 97.35%, this implies that when our model predicts a player will win, it is correct about 97.35% of the time.
 
-Recall (0.9768): Recall, or the true positive rate, indicates how many actual wins were correctly identified. A recall of 97.68% signifies that the model successfully identified approximately 97.68% of the actual wins.
+**Recall (0.9768):** Recall, or the true positive rate, indicates how many actual wins were correctly identified. A recall of 97.68% signifies that the model successfully identified approximately 97.68% of the actual wins.
 
 **Precision/Recall Curve:**
 ![Precision/Recall Curve](assets/xgb_pre.png)
 
-F1 Score (0.9752): The F1 score combines precision and recall into a single metric, offering a balance between the two. An F1 score of 97.52% is indicative of a robust model with a balanced precision and recall.
+**F1 Score (0.9752):** The F1 score combines precision and recall into a single metric, offering a balance between the two. An F1 score of 97.52% is indicative of a robust model with a balanced precision and recall.
 
-ROC-AUC Score (0.9974): This score assesses the model's ability to differentiate between classes (win and loss). A score of 99.74% is outstanding, suggesting that the model is highly effective at distinguishing between wins and losses.
+**ROC-AUC Score (0.9974):** This score assesses the model's ability to differentiate between classes (win and loss). A score of 99.74% is outstanding, suggesting that the model is highly effective at distinguishing between wins and losses.
 
 **ROC:**
 ![ROC](assets/xgb_roc.png)
 
-Confusion Matrix: The confusion matrix provides a detailed view of the model's performance:
+The confusion matrix provides a detailed view of the model's performance:
 
 True Negatives (TN): 20504 (correctly predicted losses)
 False Positives (FP): 562 (incorrectly predicted as wins)
