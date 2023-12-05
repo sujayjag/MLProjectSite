@@ -200,6 +200,35 @@ A scree plot displays the eigenvalues associated with each principal component i
 - It's a trade-off scenario where PCA simplifies the model and potentially improves generalizability at the cost of a slight decrease in predictive performance.
 - Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
+### XGBBoost
+
+**Confusion Matrix:**
+![Confusion Matrix](assets/xgb_confusion_matrix.png)
+Fill in
+
+**ROC:**
+![ROC](assets/xgb_roc.png)
+Fill in
+
+**Precision/Recall Curve:**
+![Precision/Recall Curve](assets/xgb_pre.png)
+Fill in
+
+**Log Loss:**
+![Log Loss](assets/xgb_log.png)
+Fill in
+
+**Classification Error:**
+![Classification Error](assets/xgb_error.png)
+Fill in
+
+#### Interpretation and Next Steps
+Fill in
+
+#### Contrast and Implications
+Fill in
+
+
 ### K-means Clustering
 
 For K-means clustering, we used the elbow method to select a certain number of clusters: 4. Here are the clusters we got:
