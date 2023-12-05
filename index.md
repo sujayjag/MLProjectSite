@@ -74,7 +74,7 @@ Saving the Processed Data: Finally, the cleaned and processed dataset is saved t
 
 Overall, we have prepared the dataset for analysis by addressing common issues like irrelevant features, missing values, and non-numeric data. This preprocessing is an essential step in data science to ensure the quality and reliability of predictions derived from the data.
 
-### Random Forest Classifier (w/ PCA):
+### Random Forest Classifier (w/ PCA)
 
 The first method we implemented and tested is a random forest classifier. We used this method for predicting the outcome of a given match between two payers. Random forests are an ensemble learning method that builds multiple decision trees during training and merges them together to get a more accurate and stable prediction. In the context of predicting tennis match outcomes, this ensemble approach can capture complex patterns and relationships within the data, making it effective for handling the intricacies of the sport, such as match conditions and historical performance.
 
@@ -84,15 +84,23 @@ The code first performs a train-test split on the transformed data, dividing the
 
 Although our model performed very well across the evaluation metrics, there are potential downsides to using a random forest model that are worth mentioning. Random forests can be prone to overfitting, especially if the number of trees is too high or if the model is too complex. Fine-tuning hyperparameters, such as the maximum depth of the trees and the number of decision trees, could be explored to mitigate overfitting. The overall performance and efficiency of the model depend on various factors, including the quality of the data, the chosen features, and the hyperparameter settings. Since we used a high quality dataset which spans many years and used PCA for dimensinality reduction, the model we created performed well.
 
-### XGBoost:
+### XGBoost
 
 The next method implemented for predicting the outcome of a given match between two players is XGBoost, or eXtreme Gradient Boosting. It is a highly efficient machine learning algorithm known to be highly effective with structured data that belongs to the ensemble learning family. XGBoost is an extension of the gradient boosting framework, enhancing it with several features that contribute to its increased robustness and performance. The key advantages of XGBoost are that it can handle non-linearity, understand complex relationships, and regularizes to control overfitting.
 
 At its core, XGBoost builds a strong predictive model by combining the predictions of multiple decision trees. It uses an ensemble of these trees to iteratively correct errors made by previous trees. The gradient in XGBoost refers to the optimization process, where the algorithm minimizes a loss function by moving in the direction of steepest descent. This allows XGBoost to effectively capture complex relationships in the data and handle non-linearity. XGBoost incorporates L1 and L2 regularization terms into the objective function, preventing overfitting and improving generalization to unseen data. A learning rate is used to control the contribution of each tree to the final prediction. Lower values make the model more robust but require more boosting rounds. Additionally, although our dataset was clearned to remove inputs with missing values, XGBoost has built-in mechanisms to handle missing values during the training process, allowing the model to make predictions even with incomplete data.
 
-Data applied with PCA is used to reduce the dimensionality of the feature space while retaining the most critical information, enhancing efficiency and potentially improving model performance. After this data is split into the train-test split, the XGBoost model is implemented. The xgboost library has model options for both regression and classification, and an instance of the classifier for binary classification was first created. The first parameter, n_estimators, specifies the number of decision trees that will be used in the ensemble. This is a very important hyperparameter which influences the performance and behavior of the model. The number of estimators influences the trade-off between bias and variance in the model. A higher number of estimators generally leads to a more complex model with lower bias but higher variance. Conversely, a lower number of estimators results in a simpler model with higher bias but lower variance. Finding the right balance is crucial for optimal model performance. Additionally, increasing the number of estimators also increases computational complexity. More trees require more computation during both training and prediction. Likewise, the number of trees also influences the fitting of the data, where it could end up overfitting or underfitting if chosen improperly. 100 decision trees were chosen for the n_estimators parameter after emperical testing analyzing the efficiency and computation times. Although there are a relatively large number of trees being used, since XGBoost incorporates regularization techniques, overfitting doesn't happen based off testing. Lastly, similar to the random forest implementation, a fixed random seed parameter is needed for the model (random_state=42). This parameter is used to set the random seed for reproducibility. Randomness is involved in the training process of the XGBoost model, especially when selecting subsets of data and features for each tree. Setting a random seed ensures that the results will be the same every time the code is run, making it easier to reproduce the same model and results for analysis or sharing. After the model is trained, predictions are made and metrics are analyzed.
+Data applied with PCA is used to reduce the dimensionality of the feature space while retaining the most critical information and the overall structure of the data, enhancing efficiency and potentially improving model performance. After this data is split into the train-test split, the XGBoost model is implemented. The xgboost library has model options for both regression and classification, and an instance of the classifier for binary classification was first created. The first parameter, n_estimators, specifies the number of decision trees that will be used in the ensemble. This is a very important hyperparameter which influences the performance and behavior of the model. The number of estimators influences the trade-off between bias and variance in the model. A higher number of estimators generally leads to a more complex model with lower bias but higher variance. Conversely, a lower number of estimators results in a simpler model with higher bias but lower variance. Finding the right balance is crucial for optimal model performance. Additionally, increasing the number of estimators also increases computational complexity. More trees require more computation during both training and prediction. Likewise, the number of trees also influences the fitting of the data, where it could end up overfitting or underfitting if chosen improperly. 100 decision trees were chosen for the n_estimators parameter after emperical testing analyzing the efficiency and computation times. Although there are a relatively large number of trees being used, since XGBoost incorporates regularization techniques, overfitting doesn't happen based off testing. Lastly, similar to the random forest implementation, a fixed random seed parameter is needed for the model (random_state=42). This parameter is used to set the random seed for reproducibility. Randomness is involved in the training process of the XGBoost model, especially when selecting subsets of data and features for each tree. Setting a random seed ensures that the results will be the same every time the code is run, making it easier to reproduce the same model and results for analysis or sharing. After the model is trained, predictions are made and metrics are analyzed.
 
 Although our XGBoost model performed very well across the evaluation metrics, there are potential downsides which should are worth discussing. One notable drawback is its potential susceptibility to overfitting, especially when hyperparameters are not tuned properly or when the dataset is small. XGBoost is capable of fitting complex models, and if the number of trees/boosting rounds is too high or other hyperparameters are not appropriately set, the model may memorize the training data rather than capturing generalizable patterns. Additionally, the interpretability of XGBoost models can be challenging, particularly as the number of trees increases. The ensemble nature of XGBoost makes it challenging to trace individual feature contributions, limiting its interpretability compared to simpler models like linear regression. Finally, XGBoost's optimality depends on the dataset, which in this case was not an issue.
+
+### K-Means
+
+An unsupervised model utilized for understanding the relation between input labels was the K-means clustering algorithm. Unsupervised learning techniques such as K-means are suitable for situations where there is no labeled outcome variable, and the algorithm tries to find patterns or groupings within the data on its own. One of its key advantages of using K-means is simplicity and efficiency; the algorithm is computationally efficient and easy to implement, making it suitable for large datasets. K-means is particularly effective in identifying spherical or isotropic clusters, making it robust in scenarios where clusters have similar shapes and sizes.
+
+The K-means clustering algorithm is applied to tennis match data to group matches based on various features related to player performance, such as serve rating, aces, double faults, and other relevant statistics. The features are selected based on their potential impact on match outcomes. The normalization of features using StandardScaler is done and is a common practice, as it ensures that all features contribute equally to the clustering process, preventing the dominance of certain features due to differences in scale. Then, the Elbow method is used to determine the optimal number of clusters (k). The basic idea is to plot the within-cluster sum of squares (WCSS) against different values of k and look for the "elbow" point on the graph. WCSS measures the sum of squared distances between each data point and the centroid of its assigned cluster. As k increases, WCSS tends to decrease because with more clusters, the centroids are closer to individual data points. However, at some point, adding more clusters does not significantly reduce WCSS, leading to a diminishing return in terms of explained variance. The elbow point on the graph represents the value of k where the rate of decrease in WCSS slows down, creating a noticeable bend or "elbow." The chosen k (in this case k=5) strikes a balance between model simplicity and performance, providing a reasonable number of clusters that effectively represent the underlying structure of the data. After this k value was found, the model was initialized once more with K-means++. K-means++ is an enhancement to regular K-means, specifically addressing issues associated with the random initialization of cluster centroids. In the K-means++ method, the first centroid is chosen randomly from the dataset, but subsequent centroids are selected with a probabilistic approach. The probability of choosing a data point as the next centroid is proportional to the square of its Euclidean distance from the nearest existing centroid. This strategy ensures a more even spread of initial centroids across the dataset, leading to improved convergence speed and more accurate final clustering results. Next, prediction is done and the clusters are found before being analyzed.
+
+A potential downfall of using k-means for predicting tennis match winners is that it might not capture the inherent complexities and nuances of the game. Tennis matches involve various factors like player strategies, match dynamics, and player form, which may not be well-represented by simple clusters. Additionally, the algorithm assumes that each feature contributes equally to the overall similarity between data points, which may not be true in the context of tennis matches. The performance and efficiency of the model depend on the quality of the features selected and the inherent structure of the data. The clusters obtained can provide insights into different playing styles or performance levels. However, the predictive power of these clusters in determining match winners may be limited. It's essential to evaluate the model's performance through cross-validation for more accurate predictions. While K-means clustering offers a straightforward and interpretable way to group tennis matches based on player performance, it may have limitations in accurately predicting match winners due to the inherent complexities of tennis dynamics.
 
 ## Results
 
@@ -198,29 +206,49 @@ A scree plot displays the eigenvalues associated with each principal component i
 
 ### XGBBoost
 
-**Confusion Matrix:**
-![Confusion Matrix](assets/xgb_cm.png)
-Fill in
+We employed an XGBoost classifier for our dataset, renowned for its efficiency in handling various types of data, managing missing values, and reducing overfitting. The results from the XGBoost model in predicting tennis match outcomes, tested across multiple ML metrics, are as follows:
 
-**ROC:**
-![ROC](assets/xgb_roc.png)
-Fill in
+Accuracy (0.9751): This metric reflects the overall correctness of the model's predictions. An accuracy of 97.51% indicates that our model correctly predicted the outcomes of tennis matches with high reliability.
+
+Precision (0.9735): Precision measures the accuracy of positive predictions. With a precision of 97.35%, this implies that when our model predicts a player will win, it is correct about 97.35% of the time.
+
+Recall (0.9768): Recall, or the true positive rate, indicates how many actual wins were correctly identified. A recall of 97.68% signifies that the model successfully identified approximately 97.68% of the actual wins.
 
 **Precision/Recall Curve:**
 ![Precision/Recall Curve](assets/xgb_pre.png)
-Fill in
+
+F1 Score (0.9752): The F1 score combines precision and recall into a single metric, offering a balance between the two. An F1 score of 97.52% is indicative of a robust model with a balanced precision and recall.
+
+ROC-AUC Score (0.9974): This score assesses the model's ability to differentiate between classes (win and loss). A score of 99.74% is outstanding, suggesting that the model is highly effective at distinguishing between wins and losses.
+
+**ROC:**
+![ROC](assets/xgb_roc.png)
+
+Confusion Matrix: The confusion matrix provides a detailed view of the model's performance:
+
+True Negatives (TN): 20504 (correctly predicted losses)
+False Positives (FP): 562 (incorrectly predicted as wins)
+False Negatives (FN): 489 (incorrectly predicted as losses)
+True Positives (TP): 20633 (correctly predicted wins)
+This matrix indicates a high number of correct predictions, with a relatively small number of false positives and negatives.
+
+**Confusion Matrix:**
+![Confusion Matrix](assets/xgb_cm.png)
+
+Log Loss (0.0637): Log Loss quantifies the uncertainty of predictions, where lower values are better. A log loss of 0.0637 demonstrates that the model's predictions are relatively confident and precise.
 
 **Log Loss:**
 ![Log Loss](assets/xgb_log.png)
-Fill in
 
+Fill In
 **Classification Error:**
 ![Classification Error](assets/xgb_error.png)
-Fill in
 
 #### Interpretation
-
-Fill in
+- The high accuracy, precision, recall, and F1 score suggest that the XGBoost model is highly effective in predicting tennis match outcomes.
+- The ROC-AUC score reinforces the model's exceptional capability to discriminate between wins and losses.
+- The confusion matrix affirms the model's reliability, showcasing a high rate of correct predictions with minimal errors.
+- The relatively low log loss indicates a good level of confidence in the model's predictions.
 
 ### K-means Clustering
 
