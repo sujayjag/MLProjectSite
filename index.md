@@ -159,8 +159,6 @@ This also suggests that we should perform feature reduction on this dataset to g
 - The confusion matrix confirms the high reliability of our model, with very few false positives and negatives.
 - The low log loss reflects the model's confidence in its predictions.
 - One thing to note is that our model performed extremely well. Sports outcomes are generally influenced by many unpredictable factors, making highly accurate predictions challenging. Our model achieves near-perfect accuracy, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
-- Another possibility for such high accuracy could be data leakage, where information from the test set (or future information not available at prediction time) inadvertently influences the model during training. This can happen if the dataset includes features that would not be available in a real predictive scenario.
-- The dataset might also be too homogeneous or lack variability, leading the model to easily pick up patterns that might not generalize well to real-world, more diverse data. Looking through our model and dataset, we think this may be the case. Thus, as discussed above, we might want to explore a different problem in the future milestone.
 
 #### Results with PCA
 
