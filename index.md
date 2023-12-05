@@ -39,7 +39,7 @@ The word cloud represents the players with the most victories from all the data.
 
 ## Methods
 
-The project will employ a variety of machine learning algorithms, primarily starting with logistic regression and decision trees. Given the intricacy of the dataset, ensemble methods like random forests or gradient boosting might be employed later. We intend to leverage libraries such as scikit-learn. Our dataset is from Kaggle, which is a free platform that has numerous, large datasets of various topics.
+The project will employ a variety of machine learning algorithms; given the intricacy of the dataset, ensemble methods like random forests and XGBoost are employed. In addition, we use K-means clustering to perform unsupervised learning and cluster our dataset. We intend to leverage libraries such as scikit-learn. Our dataset is from Kaggle, which is a free platform that has numerous, large datasets of various topics.
 
 ### Data Preprocessing
 
@@ -85,6 +85,7 @@ The code first performs a train-test split on the transformed data, dividing the
 Although our model performed very well across the evaluation metrics, there are potential downsides to using a random forest model that are worth mentioning. Random forests can be prone to overfitting, especially if the number of trees is too high or if the model is too complex. Fine-tuning hyperparameters, such as the maximum depth of the trees and the number of decision trees, could be explored to mitigate overfitting. The overall performance and efficiency of the model depend on various factors, including the quality of the data, the chosen features, and the hyperparameter settings. Since we used a high quality dataset which spans many years and used PCA for dimensinality reduction, the model we created performed well.
 
 ### XGBoost:
+
 The next method implemented for predicting the outcome of a given match between two players is XGBoost, or eXtreme Gradient Boosting. It is a highly efficient machine learning algorithm known to be highly effective with structured data that belongs to the ensemble learning family. XGBoost is an extension of the gradient boosting framework, enhancing it with several features that contribute to its increased robustness and performance. The key advantages of XGBoost are that it can handle non-linearity, understand complex relationships, and regularizes to control overfitting.
 
 At its core, XGBoost builds a strong predictive model by combining the predictions of multiple decision trees. It uses an ensemble of these trees to iteratively correct errors made by previous trees. The gradient in XGBoost refers to the optimization process, where the algorithm minimizes a loss function by moving in the direction of steepest descent. This allows XGBoost to effectively capture complex relationships in the data and handle non-linearity. XGBoost incorporates L1 and L2 regularization terms into the objective function, preventing overfitting and improving generalization to unseen data. A learning rate is used to control the contribution of each tree to the final prediction. Lower values make the model more robust but require more boosting rounds. Additionally, although our dataset was clearned to remove inputs with missing values, XGBoost has built-in mechanisms to handle missing values during the training process, allowing the model to make predictions even with incomplete data.
@@ -218,8 +219,8 @@ Fill in
 Fill in
 
 #### Interpretation
-Fill in
 
+Fill in
 
 ### K-means Clustering
 
@@ -340,24 +341,28 @@ For K-means clustering, we used the elbow method to select a certain number of c
 - The diversity in skill sets also emphasizes the importance of developing a comprehensive playing style, as different situations may favor different aspects of the game.
 
 #### Silhouette Score: 0.212
-- **Interpretation:** 
+
+- **Interpretation:**
   - The Silhouette Score ranges from -1 to +1. A high value indicates that objects are well matched to their own cluster and poorly matched to neighboring clusters.
   - A score of 0.212 suggests that the clusters are not very distinct. The objects are not very close to their cluster centroids and/or there might be some overlap between clusters.
   - This means the inherent grouping in the data is not very pronounced.
 
 #### Davies-Bouldin Index: 1.629
+
 - **Interpretation:**
   - The Davies-Bouldin Index is a measure of the average 'similarity' between clusters, where lower values indicate better clustering.
   - A value of 1.629, which is closer to the lower end of the scale (0 being the lowest), indicates a moderate level of separation between clusters.
   - It suggests that while there is some distinction between clusters, it's not highly pronounced.
 
 #### Calinski-Harabasz Index: 69538.387
+
 - **Interpretation:**
   - This index is a ratio of the sum of between-clusters dispersion and of within-cluster dispersion. Higher values generally indicate better-defined clusters.
   - A score of 69538.387 is relatively high, which suggests good cluster definition.
   - It indicates that the clusters are relatively dense and well-separated, which is a positive sign.
 
 #### Overall Analysis:
+
 - The clustering results present a mixed picture. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition.
 - This could be due to the complex nature of the data, where clear, distinct groupings are challenging to achieve.
 
@@ -368,6 +373,7 @@ For K-means clustering, we used the elbow method to select a certain number of c
 ### PCA vs Non-PCA Data
 
 To compare PCA vs. Non-PCA data, we can use our results from the Random Forest Classifier:
+
 - The decrease in all performance metrics suggests that PCA, while useful for simplification and potentially addressing issues like multicollinearity, might have removed some informative features.
 - The increase in log loss and decrease in precision, recall, and F1 score indicate a reduction in the overall reliability and confidence of the model.
 - However, the metrics are still relatively high, suggesting that the PCA-based model is still performing well, albeit not as exceptionally as the original model.
@@ -375,30 +381,35 @@ To compare PCA vs. Non-PCA data, we can use our results from the Random Forest C
 - Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
 ### K-means Clustering
-Most of the discussion for this was done in the results section. It is worth reiterating, however, that the k-means cluster model didn't perform too well. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition. Thus, to improve our clustering, we can experiment with different numbers of clusters, using different features, or trying other clustering algorithms like hierarchical clustering or DBSCAN that might be better suited to our data's structure.
 
+Most of the discussion for this was done in the results section. It is worth reiterating, however, that the k-means cluster model didn't perform too well. The Calinski-Harabasz Index suggests well-defined clusters, but the Silhouette Score and Davies-Bouldin Index indicate some issues with cluster overlap and definition. Thus, to improve our clustering, we can experiment with different numbers of clusters, using different features, or trying other clustering algorithms like hierarchical clustering or DBSCAN that might be better suited to our data's structure.
 
 ### Next Steps
 
 #### 1. Model Validation and Testing
+
 - **Cross-Validation:** We can implement k-fold cross-validation to ensure the robustness of our classification models and to prevent overfitting.
 - **Time-Series Split:** Since we're dealing with time-sensitive sports data, we can use a time-series cross-validation approach to respect the temporal nature of the data.
 
 #### 2. Clustering Analysis Enhancement
+
 - **Optimize Number of Clusters:** We can experiment with different numbers of clusters or different clustering algorithms (like hierarchical clustering, DBSCAN) to find the best fit for the data.
 - **Cluster Stability Analysis:** It would be useful to assess the stability of our clusters by using techniques like bootstrapping or consensus clustering.
 
 #### 3. Real-World Application and Strategy Development
+
 - **Application in Coaching and Training:** An ambitious next step is collaborating with tennis coaches or players to use insights from our analysis for developing training regimes or match strategies.
 
 #### 4. Integration with Other Data Sources
+
 - **Incorporate Additional Data:** We can integrate other data sources like player psychological profiles, detailed historical performance data, or social media sentiment analysis.
 - **Injury Data:** As many players are injury prone, it might be useful to include player injury history or physical condition data.
 
 #### 5. Explore Different Problems
+
 - **High Accuracies:** Our classification models achieve near-perfect accuracies, and this could suggest that the problem as modeled may not fully capture the inherent complexities and uncertainties of real-world tennis matches, or our problem is too simple.
-    - Thus, moving forward we can either try to find a dataset that models the complexities of the sport better, or we can shift to a more difficult problem in the context of our dataset.
-        - Some harder problems we can try to solve for next time are: predicting number of sets each game goes to, predicting how many games/set each player wins/loses in each match, number of break points and number of aces, helping analyze which betting odds are inaccurate/accurate, number of victories based off of tournament/court surface.
+  - Thus, moving forward we can either try to find a dataset that models the complexities of the sport better, or we can shift to a more difficult problem in the context of our dataset.
+    - Some harder problems we can try to solve for next time are: predicting number of sets each game goes to, predicting how many games/set each player wins/loses in each match, number of break points and number of aces, helping analyze which betting odds are inaccurate/accurate, number of victories based off of tournament/court surface.
 
 ## Timeline
 
