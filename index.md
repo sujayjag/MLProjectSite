@@ -189,6 +189,142 @@ A scree plot displays the eigenvalues associated with each principal component i
 - Overall, we think that PCA is worth it on this dataset and problem because it vastly simplified our dataset while still retaining most of the accuracy
 
 ### K-means Clustering
+For K-means clustering, we used the elbow method to select a certain number of clusters: 5. Here are the clusters we got:
+
+#### Stats for Cluster 0
+
+| Statistic                            | Value       |
+|--------------------------------------|-------------|
+| serve_rating                         | 259.674347  |
+| aces                                 | 5.197283    |
+| double_faults                        | 3.034060    |
+| first_serve_made                     | 45.407087   |
+| first_serve_points_made              | 31.702354   |
+| second_serve_points_made             | 14.402684   |
+| break_points_saved                   | 4.109128    |
+| return_rating                        | 120.719572  |
+| first_serve_return_points_made       | 11.263962   |
+| second_serve_return_points_made      | 12.635195   |
+| break_points_made                    | 1.601761    |
+| games_won                            | 10.481843   |
+| games_against                        | 12.678500   |
+| service_games_won                    | 11.283413   |
+| total_points_won                     | 70.004195   |
+
+#### Cluster 0: "Consistent Players"
+- **Characteristics:** Moderate serve rating, average aces, and double faults.
+- **Play Style:** Balanced between serving and returning, indicating a more consistent style of play.
+- **Performance:** Good at both winning games and saving break points, but not outstanding in any specific area.
+- **Summary:** These players may not dominate in serve or return but maintain a consistent performance across various aspects of the game.
+
+#### Stats for Cluster 1
+
+| Statistic                            | Value       |
+|--------------------------------------|-------------|
+| serve_rating                         | 194.927358  |
+| aces                                 | 1.899690    |
+| double_faults                        | 2.975879    |
+| first_serve_made                     | 29.708322   |
+| first_serve_points_made              | 17.288324   |
+| second_serve_points_made             | 8.286508    |
+| break_points_saved                   | 3.423053    |
+| return_rating                        | 91.195406   |
+| first_serve_return_points_made       | 6.590706    |
+| second_serve_return_points_made      | 7.479991    |
+| break_points_made                    | 0.680440    |
+| games_won                            | 4.947869    |
+| games_against                        | 11.793206   |
+| service_games_won                    | 7.870933    |
+| total_points_won                     | 39.645529   |
+
+#### Cluster 1: "Defensive Players"
+- **Characteristics:** Lower serve rating and aces, moderate double faults.
+- **Play Style:** Lower first and second serve points made, suggesting a defensive or cautious playing style.
+- **Performance:** Lower total points won, indicating they might struggle in aggressive play.
+- **Summary:** This cluster likely represents players who rely more on defensive tactics and possibly excel in longer rallies.
+
+#### Stats for Cluster 2
+
+| Statistic                            | Value       |
+|--------------------------------------|-------------|
+| serve_rating                         | 252.012630  |
+| aces                                 | 4.366957    |
+| double_faults                        | 3.967748    |
+| first_serve_made                     | 55.614636   |
+| first_serve_points_made              | 37.725098   |
+| second_serve_points_made             | 17.700540   |
+| break_points_saved                   | 5.352644    |
+| return_rating                        | 164.187618  |
+| first_serve_return_points_made       | 19.058119   |
+| second_serve_return_points_made      | 19.443693   |
+| break_points_made                    | 4.250251    |
+| games_won                            | 14.777721   |
+| games_against                        | 13.610707   |
+| service_games_won                    | 13.986645   |
+| total_points_won                     | 93.927450   |
+
+#### Cluster 2: "All-Rounders"
+- **Characteristics:** High serve and return ratings, good at both first and second serves, and return points.
+- **Play Style:** Strong in break points saved and made, indicating effectiveness in both offensive and defensive aspects.
+- **Performance:** High total points won, suggesting overall strong performance in matches.
+- **Summary:** Players in this cluster are likely versatile, excelling in various aspects of the game, making them tough competitors.
+
+#### Stats for Cluster 3
+
+| Statistic                            | Value       |
+|--------------------------------------|-------------|
+| serve_rating                         | 290.251875  |
+| aces                                 | 3.935343    |
+| double_faults                        | 1.856723    |
+| first_serve_made                     | 32.040272   |
+| first_serve_points_made              | 24.507018   |
+| second_serve_points_made             | 11.544548   |
+| break_points_saved                   | 2.005338    |
+| return_rating                        | 208.975579  |
+| first_serve_return_points_made       | 13.678366   |
+| second_serve_return_points_made      | 13.987290   |
+| break_points_made                    | 4.154172    |
+| games_won                            | 12.086264   |
+| games_against                        | 5.387236    |
+| service_games_won                    | 8.756478    |
+| total_points_won                     | 63.717222   |
+
+#### Cluster 3: "Aggressive Returners"
+- **Characteristics:** Highest return rating among all clusters.
+- **Play Style:** Good at return points but lower service games won, suggesting a stronger focus on returning than serving.
+- **Performance:** More games won against than won, indicating they might put opponents under pressure but struggle to close games.
+- **Summary:** This cluster might consist of players who excel in returning serves and applying pressure during opponents' service games.
+
+#### Stats for Cluster 4
+
+| Statistic                            | Value       |
+|--------------------------------------|-------------|
+| serve_rating                         | 278.815536  |
+| aces                                 | 11.156993   |
+| double_faults                        | 4.472828    |
+| first_serve_made                     | 71.567535   |
+| first_serve_points_made              | 52.709079   |
+| second_serve_points_made             | 23.197356   |
+| break_points_saved                   | 6.000870    |
+| return_rating                        | 126.829680  |
+| first_serve_return_points_made       | 18.841158   |
+| second_serve_return_points_made      | 21.045803   |
+| break_points_made                    | 2.923244    |
+| games_won                            | 18.137410   |
+| games_against                        | 17.765979   |
+| service_games_won                    | 17.430180   |
+| total_points_won                     | 115.793396  |
+
+#### Cluster 4: "Serve Dominators"
+- **Characteristics:** Highest serve rating and aces, high double faults.
+- **Play Style:** Exceptional first serve made and points won, indicating a dominant serving game.
+- **Performance:** High total points won and service games won, showcasing their ability to overpower opponents with their serve.
+- **Summary:** Players in this cluster are likely to rely on powerful serves to gain an advantage, potentially making them formidable in fast-paced matches.
+
+### Overall Implications:
+- This analysis shows distinct playing styles among players, from all-rounders to serve-dominant and defensive players.
+- These insights could be used for strategic planning, coaching, and match preparation, tailoring tactics to exploit the weaknesses of opponents in different clusters.
+- It also highlights the diversity of skills and strategies in professional tennis, emphasizing the need for a versatile approach to training and competition.
 
 ## Timeline
 
@@ -197,15 +333,6 @@ Gantt Chart:
 
 ## Contribution Chart
 ![Contribution Chart](assets/cc.jpeg)
-
-## Checkpoints
-  
-Final Report (End of semester):
-
-- Model Finalization & Documentation (add more models)
-- Complete any remaining testing and finalize the models.
-- Thoroughly document the methods employed.
-- Add functionality to predict more than just games like spread of sets and betting odds.
 
 ## Datasets
 [Dataset 1](https://www.kaggle.com/datasets/ehallmar/a-large-tennis-dataset-for-atp-and-itf-betting)
