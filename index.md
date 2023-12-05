@@ -84,7 +84,7 @@ The code first performs a train-test split on the transformed data, dividing the
 
 Although our model performed very well across the evaluation metrics, there are potential downsides to using a random forest model that are worth mentioning. Random forests can be prone to overfitting, especially if the number of trees is too high or if the model is too complex. Fine-tuning hyperparameters, such as the maximum depth of the trees and the number of decision trees, could be explored to mitigate overfitting. The overall performance and efficiency of the model depend on various factors, including the quality of the data, the chosen features, and the hyperparameter settings. Since we used a high quality dataset which spans many years and used PCA for dimensinality reduction, the model we created performed well.
 
-### XGBoost
+### XGBoost (w/ PCA)
 
 The next method implemented for predicting the outcome of a given match between two players is XGBoost, or eXtreme Gradient Boosting. It is a highly efficient machine learning algorithm known to be highly effective with structured data that belongs to the ensemble learning family. XGBoost is an extension of the gradient boosting framework, enhancing it with several features that contribute to its increased robustness and performance. The key advantages of XGBoost are that it can handle non-linearity, understand complex relationships, and regularizes to control overfitting.
 
